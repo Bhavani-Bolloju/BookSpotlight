@@ -1,0 +1,44 @@
+.form {
+  width: 600px;
+  margin: auto;
+  margin-top: 100px;
+  background-color: #fff;
+  padding: 100px;
+  padding-top: 50px;
+  box-shadow: 0 1px 20px rgba(#f5d0fe, 0.5);
+
+  &__heading {
+    font-size: 38px;
+    font-family: var(--font-heading);
+    font-weight: 700;
+    margin-bottom: 30px;
+    text-align: center;
+    background: linear-gradient(
+      to bottom,
+      var(--color-2),
+      var(--color-3),
+      var(--color-text-1)
+    );
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  form {
+    padding: 20px;
+  }
+  input {
+    margin-bottom: 20px;
+    border-color: var(--color-2);
+
+    &:focus {
+      border-color: var(--color-2);
+      box-shadow: 0 0 0 0.2rem rgba(#f5d0fe, 0.5);
+    }
+  }
+  button {
+    margin-top: 20px;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+}

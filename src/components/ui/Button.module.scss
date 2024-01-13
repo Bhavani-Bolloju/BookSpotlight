@@ -1,0 +1,16 @@
+.button {
+  width: 200px;
+
+  border-color: var(--color-3) !important;
+  color: var(--color-text) !important;
+  font-weight: 500 !important;
+  background: linear-gradient(
+    to right,
+    var(--color-2) 20%,
+    var(--color-3) 100%
+  );
+
+  &:hover {
+    box-shadow: 0 1px 10px rgba(240, 171, 252, 0.5);
+  }
+}

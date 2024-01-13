@@ -1,0 +1,57 @@
+.navbar {
+  color: var(--color-text-1);
+  padding-top: 20px;
+  nav {
+    background-color: inherit;
+  }
+
+  &__heading {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    img {
+      width: 40px;
+      object-fit: cover;
+    }
+    span {
+      font-weight: 700;
+      font-family: var(--font-heading);
+      font-size: 24px;
+
+      background: linear-gradient(
+        to bottom,
+        var(--color-2),
+        var(--color-text-1),
+        var(--color-3)
+      );
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+  }
+
+  &__container {
+    a {
+      color: var(--color-text-1) !important;
+      font-size: 16px;
+      text-decoration: none;
+      font-weight: 600;
+      opacity: 0.9;
+
+      &:hover {
+        opacity: 1;
+      }
+    }
+  }
+
+  &__links {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+
+  button {
+    width: 100px;
+    margin-left: 30px;
+  }
+}

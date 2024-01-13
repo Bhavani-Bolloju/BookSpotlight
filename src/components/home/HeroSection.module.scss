@@ -1,0 +1,35 @@
+.heroSection {
+  text-align: center;
+  padding: 150px;
+
+  background: linear-gradient(
+    to left bottom,
+    var(--color-background),
+    var(--color-2)
+  );
+  &__header {
+    font-size: 30px;
+    font-weight: 600;
+    text-transform: capitalize;
+    margin-bottom: 40px;
+    font-family: var(--font-heading);
+    letter-spacing: 1px;
+    color: var(--color-text-2);
+  }
+  &__search {
+    width: 60%;
+    margin: auto;
+    input {
+      border-color: var(--color-2);
+      padding: 10px 10px;
+      &:focus {
+        box-shadow: 0 5px 20px rgba(240, 171, 252, 0.6);
+        border-color: var(--color-2);
+      }
+    }
+
+    button {
+      width: 150px;
+    }
+  }
+}

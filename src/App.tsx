@@ -1,15 +1,22 @@
 // import { useEffect } from "react";
+import { useContext } from "react";
+import { AuthContext } from "./context/AuthContext";
+import { Routes, Route } from "react-router-dom";
+import AuthenticationPage from "./pages/AuthenticationPage";
+import HeaderNavigation from "./components/nav-header/HeaderNavigation";
+import HomePage from "./pages/Homepage";
 
 function App() {
+  const user = useContext(AuthContext);
+
+  console.log(user);
   return (
     <div>
-      <h1>bookSpotLight</h1>
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Pariatur
-        exercitationem mollitia iusto, dolorem, ut recusandae saepe incidunt
-        ducimus quam vero, repellat neque error numquam beatae? Unde quaerat
-        quod omnis voluptatibus?
-      </p>
+      <HeaderNavigation />
+      <Routes>
+        <Route path="/" element={<HomePage />}></Route>
+        <Route path="/auth" element={<AuthenticationPage />}></Route>
+      </Routes>
     </div>
   );
 }
@@ -31,3 +38,12 @@ export default App;
 //     })
 //     .catch((error) => console.error("Error:", error));
 // }, []);
+
+// const firebaseConfig = {
+//   apiKey: "AIzaSyCzGmj9H2vsJjUQMpp06Pzl_3PakQSXn2g",
+//   authDomain: "book-spotlight.firebaseapp.com",
+//   projectId: "book-spotlight",
+//   storageBucket: "book-spotlight.appspot.com",
+//   messagingSenderId: "925241360946",
+//   appId: "1:925241360946:web:d6d7125aad7128bb38722b"
+// };

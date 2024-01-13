@@ -1,0 +1,29 @@
+:root {
+  --color-text-1: #334155;
+  --color-text-2: #475569;
+  --color-background: #fdf4ff;
+  --color-2: #f5d0fe;
+  --color-3: #f0abfc;
+
+  /* font-family */
+  --font-heading: "Cinzel", serif;
+  --font-body: "Source Serif 4", serif;
+}
+
+/* SPACING SYSTEM (px)
+2 / 4 / 8 / 12 / 16 / 24 / 32 / 48 / 64 / 80 / 96 / 128
+
+FONT SIZE SYSTEM (px)
+10 / 12 / 14 / 16 / 18 / 20 / 24 / 30 / 36 / 44 / 52 / 62 / 74 / 86 / 98
+
+
+cinzel weights all = 400,600,700
+source serif weights =300,400,500,600.700
+
+ */
+
+body {
+  font-family: var(--font-body);
+  background-color: var(--color-background);
+  color: var(--color-text-1);
+}
