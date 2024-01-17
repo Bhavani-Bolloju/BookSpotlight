@@ -1,20 +1,24 @@
 // import { useEffect } from "react";
 import { useContext } from "react";
 import { AuthContext } from "./context/AuthContext";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router-dom";
 import AuthenticationPage from "./pages/AuthenticationPage";
 import HeaderNavigation from "./components/nav-header/HeaderNavigation";
 import HomePage from "./pages/Homepage";
+import DetailPage from "./pages/DetailPage";
+// import useFetch from "./components/custom-fetch/useFetch";
 
 function App() {
   const user = useContext(AuthContext);
-
   console.log(user);
+
   return (
     <div>
       <HeaderNavigation />
       <Routes>
         <Route path="/" element={<HomePage />}></Route>
+        <Route path="/:id" element={<DetailPage />} />
+        <Route path="/home" element={<Navigate to="/" replace />} />
         <Route path="/auth" element={<AuthenticationPage />}></Route>
       </Routes>
     </div>
@@ -22,22 +26,6 @@ function App() {
 }
 
 export default App;
-
-// useEffect(() => {
-//   const apiKey = "AIzaSyCLbu6V2H2PFoVnyWqLCekA60vC7oKhRzE";
-//   const genre = "fantasy";
-//   const maxResults = 10;
-
-//   const apiUrl = `https://www.googleapis.com/books/v1/volumes?q=subject:${genre}&maxResults=${maxResults}&key=${apiKey}`;
-
-//   fetch(apiUrl)
-//     .then((response) => response.json())
-//     .then((data) => {
-//       // Update state with the fetched books
-//       setBooks(data.items);
-//     })
-//     .catch((error) => console.error("Error:", error));
-// }, []);
 
 // const firebaseConfig = {
 //   apiKey: "AIzaSyCzGmj9H2vsJjUQMpp06Pzl_3PakQSXn2g",

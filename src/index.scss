@@ -4,6 +4,7 @@
   --color-background: #fdf4ff;
   --color-2: #f5d0fe;
   --color-3: #f0abfc;
+  --color-error: #f33c13;
 
   /* font-family */
   --font-heading: "Cinzel", serif;
@@ -26,4 +27,29 @@ body {
   font-family: var(--font-body);
   background-color: var(--color-background);
   color: var(--color-text-1);
+  letter-spacing: 0.8px;
+}
+
+.carousel-control-prev-icon {
+  background-image: url("./assets/mingcute_left-line.svg");
+}
+
+.carousel-control-next-icon {
+  background-image: url("./assets//mingcute_right-line.svg");
+}
+
+.carousel-indicators {
+  bottom: -50px;
+
+  button {
+    background-color: red !important;
+  }
+}
+
+.splide__arrow--prev {
+  left: -50px;
+}
+
+.splide__arrow--next {
+  right: -50px;
 }
