@@ -1,0 +1,59 @@
+.genre {
+  padding: 100px 150px;
+  padding-bottom: 200px;
+
+  // background-color: red;
+
+  &__title {
+    font-size: 24px;
+    font-weight: 700;
+    font-family: var(--font-heading);
+    color: var(--color-text-1);
+    margin-bottom: 50px;
+  }
+
+  .book {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    color: inherit;
+    font-family: inherit;
+    width: 100%;
+    gap: 20px;
+    transition: transform 0.3s;
+
+    &__image {
+      width: 160px;
+      border: 1px solid #f5d0fe;
+      height: 220px;
+      padding: 20px;
+      border-radius: 5px;
+
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 5px;
+      }
+    }
+    &__title {
+      text-align: start;
+      font-size: 14px;
+      width: 60%;
+    }
+
+    &:hover {
+      transform: scale(1.05);
+    }
+  }
+
+  &__list {
+    text-align: center;
+  }
+
+  .error {
+    color: var(--color-error);
+  }
+}
