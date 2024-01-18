@@ -9,6 +9,9 @@ import { Link } from "react-router-dom";
 import classes from "./GenreSection.module.scss";
 import React from "react";
 
+import CustomButton from "../ui/Button";
+import rightDouble from "../../assets/right-double-fill.svg";
+
 interface ImageLinks {
   thumbnail: string;
 }
@@ -31,11 +34,17 @@ interface GenreSectionProps {
 const GenreSection: React.FC<GenreSectionProps> = function ({ url, genre }) {
   const { data, isLoading, error } = useFetch(url);
 
-  console.log(data.totalItems);
+  // console.log(data, "genre");
 
   return (
     <section className={classes.genre}>
-      <h2 className={classes["genre__title"]}>{genre}</h2>
+      <div className={classes["genre__header"]}>
+        <h2 className={classes["genre__title"]}>{genre}</h2>
+        <CustomButton>
+          <span className={classes["btn-text"]}>View more</span>
+          <img src={rightDouble} alt="right" />
+        </CustomButton>
+      </div>
       <div className={classes["genre__list"]}>
         {!data && isLoading && (
           <Spinner animation="border" role="status">
@@ -43,7 +52,7 @@ const GenreSection: React.FC<GenreSectionProps> = function ({ url, genre }) {
           </Spinner>
         )}
         {!isLoading && error && <p className={classes["error"]}>{error}</p>}
-        {data && data?.totalItems <= 0 && (
+        {data && data?.items?.length <= 0 && (
           <p className={classes["error"]}>Couldn't find the results</p>
         )}
         {data && data?.totalItems > 0 && !isLoading && (
@@ -52,8 +61,7 @@ const GenreSection: React.FC<GenreSectionProps> = function ({ url, genre }) {
               perPage: 5,
               arrows: true,
               pagination: false,
-              drag: "free",
-              gap: "1rem"
+              drag: "free"
             }}
           >
             {data &&

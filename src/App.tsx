@@ -5,7 +5,7 @@ import { Routes, Route, Navigate } from "react-router-dom";
 import AuthenticationPage from "./pages/AuthenticationPage";
 import HeaderNavigation from "./components/nav-header/HeaderNavigation";
 import HomePage from "./pages/Homepage";
-import DetailPage from "./pages/DetailPage";
+import DetailBookPage from "./pages/DetailBookPage";
 // import useFetch from "./components/custom-fetch/useFetch";
 
 function App() {
@@ -17,7 +17,7 @@ function App() {
       <HeaderNavigation />
       <Routes>
         <Route path="/" element={<HomePage />}></Route>
-        <Route path="/:id" element={<DetailPage />} />
+        <Route path="/:id" element={<DetailBookPage />} />
         <Route path="/home" element={<Navigate to="/" replace />} />
         <Route path="/auth" element={<AuthenticationPage />}></Route>
       </Routes>

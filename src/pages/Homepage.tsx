@@ -2,13 +2,21 @@
 import classes from "./HomePage.module.scss";
 import HeroSection from "../components/home/HeroSection";
 import FictionSection from "../components/home/FictionSection";
+import ScienceSection from "../components/home/ScienceSection";
+import BiographySection from "../components/home/BiographySection";
+import MysterySection from "../components/home/MysterySection";
 
 function HomePage() {
   return (
-    <div className={classes.homePage}>
+    <section className={classes.homePage}>
       <HeroSection />
-      <FictionSection />
-    </div>
+      <main>
+        <ScienceSection />
+        <BiographySection />
+        <FictionSection />
+        <MysterySection />
+      </main>
+    </section>
   );
 }
 

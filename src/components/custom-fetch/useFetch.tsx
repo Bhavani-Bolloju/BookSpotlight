@@ -2,13 +2,15 @@ import useSWR from "swr";
 
 const fetcher = (url: string) => fetch(url).then((res) => res.json());
 
-const apiKey = "AIzaSyCLbu6V2H2PFoVnyWqLCekA60vC7oKhRzE";
+const apiKey = import.meta.env.VITE_GOOGLE_API_KEY;
 
 const useFetch = function (url: string) {
-  const key = `https://www.googleapis.com/books/v1/${url}&key=${apiKey}`;
+  const key = `https://www.googleapis.com/books/v1/${url}key=${apiKey}`;
+
+  // console.log(key);
 
   const { data, error, isLoading } = useSWR(key, fetcher);
-  // console.log(data, "swr");
+  console.log(data, "swr");
 
   return { data, error, isLoading };
 };
@@ -20,7 +22,9 @@ export default useFetch;
 //   const genre = "fiction";
 //   const maxResults = 5;
 
-//   const apiUrl = `https://www.googleapis.com/books/v1/volumes?q=subject:${genre}&maxResults=${maxResults}&key=${apiKey}`;
+//   const apiUrl = `https://www.googleapis.com/books/v1/
+//    volumes ? q = subject : ${ genre }& maxResults=${     maxResults }&
+// key = ${ apiKey }`;
 
 //   fetch(apiUrl)
 //     .then((response) => response.json())
@@ -31,3 +35,6 @@ export default useFetch;
 //     })
 //     .catch((error) => console.error("Error:", error));
 // }, []);
+// https://www.googleapis.com/books/v1/
+// volumes / ${ id }?
+// key = ${ googleBooksApiKey } `
