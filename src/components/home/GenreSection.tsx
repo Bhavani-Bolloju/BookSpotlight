@@ -19,6 +19,8 @@ interface ImageLinks {
 interface VolumeInfo {
   title: string;
   imageLinks: ImageLinks;
+
+  authors: string[];
 }
 
 interface Book {
@@ -77,6 +79,12 @@ const GenreSection: React.FC<GenreSectionProps> = function ({ url, genre }) {
                       </div>
                       <p className={classes["book__title"]}>
                         {book?.volumeInfo?.title}
+                      </p>
+                      <p className={classes["book__author"]}>
+                        By{" "}
+                        {book?.volumeInfo?.authors
+                          ? book?.volumeInfo?.authors
+                          : "unknown"}
                       </p>
                     </Link>
                   </SplideSlide>
