@@ -24,9 +24,8 @@ const Description: React.FC<DescriptionProp> = function ({ htmlContent }) {
 function DetailBookPage() {
   const params = useParams();
   const id = params?.id;
-  // const book = null;
 
-  const { data: book, error, isLoading } = useFetch(`volumes/${id}?`, id);
+  const { data: book, error, isLoading } = useFetch(`volumes/${id}?`);
 
   return (
     <section className={classes.book}>

@@ -6,7 +6,7 @@ import AuthenticationPage from "./pages/AuthenticationPage";
 import HeaderNavigation from "./components/nav-header/HeaderNavigation";
 import HomePage from "./pages/Homepage";
 import DetailBookPage from "./pages/DetailBookPage";
-// import useFetch from "./components/custom-fetch/useFetch";
+import SearchResultsPage from "./pages/SearchResultsPage";
 
 function App() {
   const user = useContext(AuthContext);
@@ -16,10 +16,15 @@ function App() {
     <div>
       <HeaderNavigation />
       <Routes>
-        <Route path="/" element={<HomePage />}></Route>
-        <Route path="/:id" element={<DetailBookPage />} />
-        <Route path="/home" element={<Navigate to="/" replace />} />
-        <Route path="/auth" element={<AuthenticationPage />}></Route>
+        <Route path="/">
+          <Route index element={<HomePage />} />
+          <Route path=":id" element={<DetailBookPage />} />
+          <Route path="home" element={<Navigate to="/" replace />} />
+          <Route path="auth" element={<AuthenticationPage />} />
+          <Route path="genre">
+            <Route path=":id" element={<SearchResultsPage />}></Route>
+          </Route>
+        </Route>
       </Routes>
     </div>
   );

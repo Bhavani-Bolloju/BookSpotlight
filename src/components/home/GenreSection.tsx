@@ -4,14 +4,16 @@ import { Splide, SplideSlide } from "@splidejs/react-splide";
 import "@splidejs/react-splide/css";
 
 import Spinner from "react-bootstrap/Spinner";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
-import classes from "./GenreSection.module.scss";
 import React from "react";
 
 import CustomButton from "../ui/Button";
 import rightDouble from "../../assets/right-double-fill.svg";
 
+import BookItem from "./BookItem";
+
+import classes from "./GenreSection.module.scss";
 interface ImageLinks {
   thumbnail: string;
 }
@@ -36,13 +38,17 @@ interface GenreSectionProps {
 const GenreSection: React.FC<GenreSectionProps> = function ({ url, genre }) {
   const { data, isLoading, error } = useFetch(url);
 
+  const navigate = useNavigate();
   // console.log(data, "genre");
+  const navigateHandler = function () {
+    navigate(`/genre/${genre}`);
+  };
 
   return (
     <section className={classes.genre}>
       <div className={classes["genre__header"]}>
         <h2 className={classes["genre__title"]}>{genre}</h2>
-        <CustomButton>
+        <CustomButton onClick={navigateHandler}>
           <span className={classes["btn-text"]}>View more</span>
           <img src={rightDouble} alt="right" />
         </CustomButton>
@@ -70,23 +76,12 @@ const GenreSection: React.FC<GenreSectionProps> = function ({ url, genre }) {
               data?.items?.map((book: Book) => {
                 return (
                   <SplideSlide key={book.id}>
-                    <Link to={`/${book.id}`} className={classes.book}>
-                      <div className={classes["book__image"]}>
-                        <img
-                          src={book?.volumeInfo?.imageLinks?.thumbnail}
-                          alt=""
-                        />
-                      </div>
-                      <p className={classes["book__title"]}>
-                        {book?.volumeInfo?.title}
-                      </p>
-                      <p className={classes["book__author"]}>
-                        By{" "}
-                        {book?.volumeInfo?.authors
-                          ? book?.volumeInfo?.authors
-                          : "unknown"}
-                      </p>
-                    </Link>
+                    <BookItem
+                      id={book?.id}
+                      thumbnail={book?.volumeInfo?.imageLinks?.thumbnail}
+                      title={book?.volumeInfo?.title}
+                      authors={book?.volumeInfo?.authors}
+                    />
                   </SplideSlide>
                 );
               })}
