@@ -2,7 +2,7 @@ import useSWR from "swr";
 
 const fetcher = (url: string) => fetch(url).then((res) => res.json());
 
-const apiKey = import.meta.env.VITE_GOOGLE_API_KEY;
+export const apiKey = import.meta.env.VITE_GOOGLE_API_KEY;
 
 const useFetch = function (url: string) {
   const key = `https://www.googleapis.com/books/v1/${url}key=${apiKey}`;
@@ -11,7 +11,6 @@ const useFetch = function (url: string) {
 
   return { data, error, isLoading };
 };
-
 export default useFetch;
 
 // useEffect(() => {
