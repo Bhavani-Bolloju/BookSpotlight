@@ -4,7 +4,7 @@ import { Splide, SplideSlide } from "@splidejs/react-splide";
 import "@splidejs/react-splide/css";
 
 import Spinner from "react-bootstrap/Spinner";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 import React from "react";
 
@@ -25,7 +25,7 @@ interface VolumeInfo {
   authors: string[];
 }
 
-interface Book {
+export interface Book {
   id: string;
   volumeInfo: VolumeInfo;
 }
