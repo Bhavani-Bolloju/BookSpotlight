@@ -1,22 +1,31 @@
-// import React from 'react'
-import { useParams } from "react-router";
+// import { useParams } from "react-router";
 import { Spinner } from "react-bootstrap";
-import { apiKey } from "../components/custom-fetch/useFetch";
+// import { apiKey } from "../components/custom-fetch/useFetch";
 
-import classes from "./SearchResultsPage.module.scss";
-import BookItem from "../components/home/BookItem";
-import { Book } from "../components/home/GenreSection";
-import { useCallback, useEffect, useRef, useState } from "react";
+import classes from "./SearchResults.module.scss";
+
+import BookItem from "../home/BookItem";
+import { Book } from "../home/GenreSection";
+import React, { useCallback, useEffect, useRef, useState } from "react";
 // import debounce from "lodash/debounce";
-function SearchResultsPage() {
-  const params = useParams();
 
-  console.log(params);
+interface SearchResultsProps {
+  title: string;
+  genre: string;
+}
+
+const SearchResults: React.FC<SearchResultsProps> = function ({
+  title,
+  genre
+}) {
+  // const params = useParams();
+
+  // console.log(params);
 
   // const url = `volumes?q=subject:${genre}&startIndex=${
   //   index.current * maxResults
   // }&maxResults=${maxResults}&`;
-  const genre = params.id;
+  // const genre = params.id;
   const maxResults = 10;
   const index = useRef<number>(0);
 
@@ -26,17 +35,31 @@ function SearchResultsPage() {
 
   const targetObserver = useRef<HTMLDivElement>(null);
 
-  const fetchDataOnScroll = useCallback(async () => {
+  // console.log(title, genre);
+
+  let fetchUrl = `https://www.googleapis.com/books/v1/volumes?q=subject:${genre}&startIndex=${
+    index.current * maxResults
+  }&maxResults=${maxResults}`;
+
+  if (title === "author") {
+    fetchUrl = `https://www.googleapis.com/books/v1/volumes?q=inauthor:${genre}&startIndex=${
+      index.current * maxResults
+    }&maxResults=${maxResults}`;
+  }
+
+  // console.log(fetchUrl);
+
+  const fetchDataOnScroll = useCallback(async (url: string) => {
     setIsLoading(true);
     try {
-      const req = await fetch(
-        `https://www.googleapis.com/books/v1/volumes?q=subject:${genre}&startIndex=${
-          index.current * maxResults
-        }&maxResults=${maxResults}&key=${apiKey}`
-      );
+      const req = await fetch(url);
       const res = await req.json();
       if (!req.ok) {
         throw new Error(res);
+      }
+
+      if (req.ok && !res.items) {
+        throw new Error("That is it floks");
       }
       setData((prev) => {
         if (res) {
@@ -50,17 +73,14 @@ function SearchResultsPage() {
       setError((error as Error).message);
     }
     setIsLoading(false);
-    // setError(null);
-  }, [genre, maxResults]);
-
-  // console.log(error, isLoading, data);
+  }, []);
 
   useEffect(() => {
     const currentObserver = targetObserver.current;
     const observer = new IntersectionObserver(
       (entries) => {
         if (entries[0].isIntersecting) {
-          fetchDataOnScroll();
+          fetchDataOnScroll(fetchUrl);
           index.current = index.current + 1;
         }
       },
@@ -80,12 +100,14 @@ function SearchResultsPage() {
 
       observer.disconnect();
     };
-  }, [targetObserver, fetchDataOnScroll]);
+  }, [targetObserver, fetchDataOnScroll, fetchUrl]);
 
   return (
     <section id="searchResults" className={classes.searchResults}>
       <div className={classes["searchResults__container"]}>
-        <h3 className={classes["searchResults__title"]}>{genre}</h3>
+        <h3 className={classes["searchResults__title"]}>
+          {title === "author" ? `more books by ${genre.split("+")}` : genre}
+        </h3>
 
         {data && data?.length > 0 && (
           <ul className={classes["searchResults__list"]}>
@@ -102,14 +124,14 @@ function SearchResultsPage() {
           </ul>
         )}
         {isLoading && <Spinner />}
-        {error && <p>error fetching data, please try again</p>}
+        {error && <p>{error}</p>}
       </div>
       <div ref={targetObserver} className={classes.end}></div>
     </section>
   );
-}
+};
 
-export default SearchResultsPage;
+export default SearchResults;
 
 /*
 `volumes?q=subject:${genre}&startIndex=${0}&maxResults=${maxResults}&`

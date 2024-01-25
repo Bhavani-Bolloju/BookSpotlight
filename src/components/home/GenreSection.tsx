@@ -54,7 +54,6 @@ const GenreSection: React.FC<GenreSectionProps> = function ({
   const { data, isLoading, error } = useFetch(URL);
 
   const navigate = useNavigate();
-
   const navigateHandler = function () {
     const encodeURL = encodeURIComponent(title);
     navigate(`/${name}/${encodeURL}`);
