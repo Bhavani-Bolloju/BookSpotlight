@@ -31,23 +31,39 @@ export interface Book {
 }
 
 interface GenreSectionProps {
-  url: string;
-  genre: string;
+  name: string;
+  title: string;
+  heading?: string;
 }
 
-const GenreSection: React.FC<GenreSectionProps> = function ({ url, genre }) {
-  const { data, isLoading, error } = useFetch(url);
+const GenreSection: React.FC<GenreSectionProps> = function ({
+  name,
+  title,
+  heading
+}) {
+  const maxResults = 10;
+  let URL: string = `volumes?q=subject:science&maxResults=${maxResults}&`;
+  if (name === "genre") {
+    URL = `volumes?q=subject:${title}&maxResults=${maxResults}&`;
+  }
+
+  if (name === "author") {
+    URL = `volumes?q=inauthor:${title}&printType=books&langRestrict=en&`;
+  }
+
+  const { data, isLoading, error } = useFetch(URL);
 
   const navigate = useNavigate();
-  // console.log(data, "genre");
+
   const navigateHandler = function () {
-    navigate(`/genre/${genre}`);
+    const encodeURL = encodeURIComponent(title);
+    navigate(`/${name}/${encodeURL}`);
   };
 
   return (
     <section className={classes.genre}>
       <div className={classes["genre__header"]}>
-        <h2 className={classes["genre__title"]}>{genre}</h2>
+        <h2 className={classes["genre__title"]}>{heading ? heading : title}</h2>
         <CustomButton onClick={navigateHandler}>
           <span className={classes["btn-text"]}>View more</span>
           <img src={rightDouble} alt="right" />
@@ -73,9 +89,9 @@ const GenreSection: React.FC<GenreSectionProps> = function ({ url, genre }) {
             }}
           >
             {data &&
-              data?.items?.map((book: Book) => {
+              data?.items?.map((book: Book, i: number) => {
                 return (
-                  <SplideSlide key={book.id}>
+                  <SplideSlide key={book.id + "" + i}>
                     <BookItem
                       id={book?.id}
                       thumbnail={book?.volumeInfo?.imageLinks?.thumbnail}

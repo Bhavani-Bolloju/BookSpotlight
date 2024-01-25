@@ -11,6 +11,8 @@ import { useCallback, useEffect, useRef, useState } from "react";
 function SearchResultsPage() {
   const params = useParams();
 
+  console.log(params);
+
   // const url = `volumes?q=subject:${genre}&startIndex=${
   //   index.current * maxResults
   // }&maxResults=${maxResults}&`;
@@ -24,61 +26,61 @@ function SearchResultsPage() {
 
   const targetObserver = useRef<HTMLDivElement>(null);
 
-  const fetchDataOnScroll = useCallback(async () => {
-    setIsLoading(true);
-    try {
-      const req = await fetch(
-        `https://www.googleapis.com/books/v1/volumes?q=subject:${genre}&startIndex=${
-          index.current * maxResults
-        }&maxResults=${maxResults}&key=${apiKey}`
-      );
-      const res = await req.json();
-      if (!req.ok) {
-        throw new Error(res);
-      }
-      setData((prev) => {
-        if (res) {
-          const data = [...prev, ...res.items] as never[];
-          return data;
-        } else {
-          return prev;
-        }
-      });
-    } catch (error) {
-      setError((error as Error).message);
-    }
-    setIsLoading(false);
-    // setError(null);
-  }, [genre, maxResults]);
+  // const fetchDataOnScroll = useCallback(async () => {
+  //   setIsLoading(true);
+  //   try {
+  //     const req = await fetch(
+  //       `https://www.googleapis.com/books/v1/volumes?q=subject:${genre}&startIndex=${
+  //         index.current * maxResults
+  //       }&maxResults=${maxResults}&key=${apiKey}`
+  //     );
+  //     const res = await req.json();
+  //     if (!req.ok) {
+  //       throw new Error(res);
+  //     }
+  //     setData((prev) => {
+  //       if (res) {
+  //         const data = [...prev, ...res.items] as never[];
+  //         return data;
+  //       } else {
+  //         return prev;
+  //       }
+  //     });
+  //   } catch (error) {
+  //     setError((error as Error).message);
+  //   }
+  //   setIsLoading(false);
+  //   // setError(null);
+  // }, [genre, maxResults]);
 
   // console.log(error, isLoading, data);
 
-  useEffect(() => {
-    const currentObserver = targetObserver.current;
-    const observer = new IntersectionObserver(
-      (entries) => {
-        if (entries[0].isIntersecting) {
-          fetchDataOnScroll();
-          index.current = index.current + 1;
-        }
-      },
-      {
-        root: null,
-        threshold: 0
-      }
-    );
+  // useEffect(() => {
+  //   const currentObserver = targetObserver.current;
+  //   const observer = new IntersectionObserver(
+  //     (entries) => {
+  //       if (entries[0].isIntersecting) {
+  //         fetchDataOnScroll();
+  //         index.current = index.current + 1;
+  //       }
+  //     },
+  //     {
+  //       root: null,
+  //       threshold: 0
+  //     }
+  //   );
 
-    if (currentObserver) {
-      observer.observe(currentObserver);
-    }
-    return () => {
-      if (currentObserver) {
-        observer.unobserve(currentObserver);
-      }
+  //   if (currentObserver) {
+  //     observer.observe(currentObserver);
+  //   }
+  //   return () => {
+  //     if (currentObserver) {
+  //       observer.unobserve(currentObserver);
+  //     }
 
-      observer.disconnect();
-    };
-  }, [targetObserver, fetchDataOnScroll]);
+  //     observer.disconnect();
+  //   };
+  // }, [targetObserver, fetchDataOnScroll]);
 
   return (
     <section id="searchResults" className={classes.searchResults}>

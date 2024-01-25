@@ -25,7 +25,7 @@ function DetailBookPage() {
   const params = useParams();
   const id = params?.id;
 
-  const { data: book, error, isLoading } = useFetch(`volumes/${id}?`);
+  const { data: book, error, isLoading } = useFetch(`volumes/${id}`);
 
   return (
     <section className={classes.book}>
@@ -89,7 +89,12 @@ function DetailBookPage() {
         )}
       </div>
 
-      {book && <RecommendedBooks authors={book?.volumeInfo?.authors} />}
+      {book && (
+        <RecommendedBooks
+          authors={book?.volumeInfo?.authors}
+          categories={book?.volumeInfo?.categories}
+        />
+      )}
     </section>
   );
 }
