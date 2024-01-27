@@ -1,0 +1,17 @@
+.modal {
+  padding: 50px;
+}
+
+.search {
+  &__list {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    height: 70vh;
+    overflow-y: scroll;
+
+    a {
+      flex-basis: 20%;
+    }
+  }
+}

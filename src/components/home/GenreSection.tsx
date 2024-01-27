@@ -42,13 +42,13 @@ const GenreSection: React.FC<GenreSectionProps> = function ({
   heading
 }) {
   const maxResults = 10;
-  let URL: string = `volumes?q=subject:science&maxResults=${maxResults}&`;
+  let URL: string = `volumes?q=subject:science&maxResults=${maxResults}`;
   if (name === "genre") {
-    URL = `volumes?q=subject:${title}&maxResults=${maxResults}&`;
+    URL = `volumes?q=subject:${title}&maxResults=${maxResults}&orderBy=newest&projection=lite&printType=books`;
   }
 
   if (name === "author") {
-    URL = `volumes?q=inauthor:${title}&printType=books&langRestrict=en&`;
+    URL = `volumes?q=inauthor:${title}&printType=books&langRestrict=en&orderBy=newest&projection=lite&printType=books&langRestrict=en`;
   }
 
   const { data, isLoading, error } = useFetch(URL);
@@ -58,6 +58,8 @@ const GenreSection: React.FC<GenreSectionProps> = function ({
     const encodeURL = encodeURIComponent(title);
     navigate(`/${name}/${encodeURL}`);
   };
+
+  // console.log(data);
 
   return (
     <section className={classes.genre}>
@@ -108,3 +110,8 @@ const GenreSection: React.FC<GenreSectionProps> = function ({
 };
 
 export default GenreSection;
+
+/*
+`https://www.googleapis.com/books/v1/volumes?q=${query}&maxResults=10`
+
+*/
