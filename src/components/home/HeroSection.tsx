@@ -1,11 +1,11 @@
 // import React from 'react'
-import classes from "./HeroSection.module.scss";
 import InputGroup from "react-bootstrap/InputGroup";
 import Form from "react-bootstrap/Form";
 import CustomButton from "../ui/Button";
 import React, { useState } from "react";
 
 import CustomModal from "../ui/CustomModal";
+import classes from "./HeroSection.module.scss";
 
 function HeroSection() {
   const [inputQuery, setInputQuery] = useState("");
