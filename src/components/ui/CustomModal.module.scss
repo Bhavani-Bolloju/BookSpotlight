@@ -1,0 +1,41 @@
+.modal {
+  padding: 40px 50px;
+  text-align: center;
+
+  button {
+    margin-top: 30px;
+    width: fit-content;
+    padding: 5px 30px;
+  }
+
+  &__heading {
+    font-size: 24px;
+    font-family: var(--font-heading);
+    font-weight: 600;
+    margin-bottom: 30px;
+    text-align: start;
+    color: var(--color-text-2);
+  }
+
+  .error {
+    font-size: 18px;
+    font-weight: 500;
+    color: var(--color-error);
+  }
+}
+
+.search {
+  &__list {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: start;
+    justify-content: flex-start;
+    height: 65vh;
+    overflow-y: scroll;
+
+    a {
+      flex-basis: 20%;
+    }
+  }
+}

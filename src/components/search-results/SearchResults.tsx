@@ -18,14 +18,6 @@ const SearchResults: React.FC<SearchResultsProps> = function ({
   title,
   genre
 }) {
-  // const params = useParams();
-
-  // console.log(params);
-
-  // const url = `volumes?q=subject:${genre}&startIndex=${
-  //   index.current * maxResults
-  // }&maxResults=${maxResults}&`;
-  // const genre = params.id;
   const maxResults = 10;
   const index = useRef<number>(0);
 
@@ -35,52 +27,51 @@ const SearchResults: React.FC<SearchResultsProps> = function ({
 
   const targetObserver = useRef<HTMLDivElement>(null);
 
-  // console.log(title, genre);
-
-  let fetchUrl = `https://www.googleapis.com/books/v1/volumes?q=subject:${genre}&startIndex=${
-    index.current * maxResults
-  }&maxResults=${maxResults}`;
+  let fetchUrl = `subject`;
 
   if (title === "author") {
-    fetchUrl = `https://www.googleapis.com/books/v1/volumes?q=inauthor:${genre}&startIndex=${
-      index.current * maxResults
-    }&maxResults=${maxResults}`;
+    fetchUrl = `inauthor`;
   }
 
-  // console.log(fetchUrl);
-
-  const fetchDataOnScroll = useCallback(async (url: string) => {
-    setIsLoading(true);
-    try {
-      const req = await fetch(url);
-      const res = await req.json();
-      if (!req.ok) {
-        throw new Error(res);
-      }
-
-      if (req.ok && !res.items) {
-        throw new Error("That is it floks");
-      }
-      setData((prev) => {
-        if (res) {
-          const data = [...prev, ...res.items] as never[];
-          return data;
-        } else {
-          return prev;
+  const fetchDataOnScroll = useCallback(
+    async (keyword: string, value: string) => {
+      setIsLoading(true);
+      try {
+        const req = await fetch(
+          `https://www.googleapis.com/books/v1/volumes?q=${keyword}:${value}&startIndex=${
+            index.current * maxResults
+          }&maxResults=${maxResults}&orderBy=newest&printType=books&langRestrict=en`
+        );
+        const res = await req.json();
+        if (!req.ok) {
+          throw new Error(res);
         }
-      });
-    } catch (error) {
-      setError((error as Error).message);
-    }
-    setIsLoading(false);
-  }, []);
+
+        if (req.ok && !res.items) {
+          throw new Error("That is it floks");
+        }
+        setData((prev) => {
+          if (res) {
+            const data = [...prev, ...res.items] as never[];
+            return data;
+          } else {
+            return prev;
+          }
+        });
+      } catch (error) {
+        setError((error as Error).message);
+      }
+      setIsLoading(false);
+    },
+    []
+  );
 
   useEffect(() => {
     const currentObserver = targetObserver.current;
     const observer = new IntersectionObserver(
       (entries) => {
         if (entries[0].isIntersecting) {
-          fetchDataOnScroll(fetchUrl);
+          fetchDataOnScroll(fetchUrl, genre);
           index.current = index.current + 1;
         }
       },
@@ -100,7 +91,7 @@ const SearchResults: React.FC<SearchResultsProps> = function ({
 
       observer.disconnect();
     };
-  }, [targetObserver, fetchDataOnScroll, fetchUrl]);
+  }, [targetObserver, fetchDataOnScroll, fetchUrl, genre]);
 
   return (
     <section id="searchResults" className={classes.searchResults}>

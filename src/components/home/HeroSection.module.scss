@@ -18,9 +18,21 @@
     input {
       border-color: var(--color-2);
       padding: 10px 10px;
+      font-size: 16px;
+      font-family: var(--font-body);
+      color: var(--color-text-2);
       &:focus {
         box-shadow: 0 5px 20px rgba(240, 171, 252, 0.6);
         border-color: var(--color-2);
+        color: inherit;
+      }
+
+      &::placeholder {
+        font-size: 16px;
+        text-transform: capitalize;
+        font-weight: 500;
+        color: var(--color-3);
+        font-family: inherit;
       }
     }
 
