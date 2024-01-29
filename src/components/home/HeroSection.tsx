@@ -9,9 +9,6 @@ import classes from "./HeroSection.module.scss";
 
 function HeroSection() {
   const [inputQuery, setInputQuery] = useState("");
-  // const [searchData, setSearchData] = useState([]);
-  // const [isLoading, setIsLoading] = useState(false);
-  // const [error, setError] = useState(null);
 
   const [modalShow, setModalShow] = useState(false);
 

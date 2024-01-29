@@ -5,14 +5,14 @@
   button {
     margin-top: 30px;
     width: fit-content;
-    padding: 5px 30px;
+    padding: 5px;
   }
 
   &__heading {
     font-size: 24px;
     font-family: var(--font-heading);
     font-weight: 600;
-    margin-bottom: 30px;
+    margin-bottom: 10px;
     text-align: start;
     color: var(--color-text-2);
   }
@@ -30,12 +30,15 @@
     display: flex;
     flex-wrap: wrap;
     align-items: start;
-    justify-content: flex-start;
-    height: 65vh;
+    // justify-content: space-around;
+    height: 60vh;
     overflow-y: scroll;
+    padding: 0;
+    margin: 0;
 
     a {
-      flex-basis: 20%;
+      // flex-grow: 1;
+      flex-basis: 10%;
     }
   }
 }

@@ -80,7 +80,11 @@ function DetailBookPage() {
               </li>
               <li>
                 <span className={classes.title}>preview link : </span>
-                <a className={classes.text} target="_blank">
+                <a
+                  href={book?.volumeInfo?.previewLink}
+                  className={classes.text}
+                  target="_blank"
+                >
                   {book?.volumeInfo?.previewLink}
                 </a>
               </li>
