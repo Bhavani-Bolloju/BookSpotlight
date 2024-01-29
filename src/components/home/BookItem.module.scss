@@ -10,6 +10,17 @@
   transition: transform 0.2s;
   padding: 30px;
 
+  button {
+    background-color: transparent;
+    color: inherit;
+    border: none;
+
+    &:hover {
+      background-color: transparent !important;
+      color: inherit;
+    }
+  }
+
   &__image {
     width: 160px;
     height: 220px;
@@ -31,9 +42,14 @@
     width: 90%;
     margin: 0;
     margin-top: 10px;
-    // margin-left: 5px;
     line-height: 1.2;
     font-weight: 500;
+
+    overflow: hidden;
+    -webkit-box-orient: vertical;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
   }
 
   &__author {
@@ -42,9 +58,30 @@
     text-align: start;
     margin-top: 5px;
     color: var(--color-text-2);
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    line-clamp: 1;
+    -webkit-box-orient: vertical;
   }
 
   &:hover {
     transform: scale(1.05);
+  }
+}
+
+.popover {
+  &__description {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 10;
+    line-clamp: 10;
+    -webkit-box-orient: vertical;
+    font-size: 14px;
+    line-height: 1.8;
+    span {
+      font-weight: 600;
+      font-size: 16px;
+    }
   }
 }

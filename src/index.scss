@@ -58,3 +58,13 @@ body {
     fill: var(--color-text-1);
   }
 }
+
+.popover {
+  background-color: var(--color-2);
+  background: linear-gradient(var(--color-3), var(--color-2));
+  padding: 5px 10px;
+  border: none;
+  display: flex;
+  color: var(--color-text-1);
+  font-family: var(--font-body);
+}

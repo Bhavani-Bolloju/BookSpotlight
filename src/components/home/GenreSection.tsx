@@ -23,6 +23,8 @@ interface VolumeInfo {
   imageLinks: ImageLinks;
 
   authors: string[];
+
+  description: string;
 }
 
 export interface Book {
@@ -52,6 +54,8 @@ const GenreSection: React.FC<GenreSectionProps> = function ({
   }
 
   const { data, isLoading, error } = useFetch(URL);
+
+  console.log(data);
 
   const navigate = useNavigate();
   const navigateHandler = function () {
@@ -98,6 +102,7 @@ const GenreSection: React.FC<GenreSectionProps> = function ({
                       thumbnail={book?.volumeInfo?.imageLinks?.thumbnail}
                       title={book?.volumeInfo?.title}
                       authors={book?.volumeInfo?.authors}
+                      description={book?.volumeInfo?.description}
                     />
                   </SplideSlide>
                 );
