@@ -46,7 +46,7 @@ const GenreSection: React.FC<GenreSectionProps> = function ({
   const maxResults = 10;
   let URL: string = `volumes?q=subject:science&maxResults=${maxResults}`;
   if (name === "genre") {
-    URL = `volumes?q=subject:${title}&maxResults=${maxResults}&orderBy=newest&projection=lite&printType=books`;
+    URL = `volumes?q=subject:${title}&maxResults=${maxResults}&orderBy=newest&projection=lite&printType=books&langRestrict=en`;
   }
 
   if (name === "author") {

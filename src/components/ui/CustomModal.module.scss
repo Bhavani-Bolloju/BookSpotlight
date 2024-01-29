@@ -1,6 +1,7 @@
 .modal {
-  padding: 40px 50px;
+  // padding: 40px 50px;
   text-align: center;
+  padding: 30px;
 
   button {
     margin-top: 30px;
@@ -12,7 +13,9 @@
     font-size: 24px;
     font-family: var(--font-heading);
     font-weight: 600;
-    margin-bottom: 10px;
+    margin-top: 30px;
+    margin-left: 50px;
+    margin-bottom: 30px;
     text-align: start;
     color: var(--color-text-2);
   }
@@ -30,15 +33,36 @@
     display: flex;
     flex-wrap: wrap;
     align-items: start;
-    // justify-content: space-around;
+    justify-content: start;
     height: 60vh;
     overflow-y: scroll;
-    padding: 0;
+    overflow-x: hidden;
     margin: 0;
+    padding: 0px 30px;
 
     a {
-      // flex-grow: 1;
+      padding: 10px;
+    }
+
+    &::-webkit-scrollbar {
+      width: 6px;
+      border-radius: 5px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background-color: var(--color-3);
+      border-radius: 5px;
+    }
+
+    &::-webkit-scrollbar-track {
+      background-color: var(--color-2);
+      opacity: 0.8;
+    }
+
+    a {
+      flex-grow: 1;
       flex-basis: 10%;
+      max-width: 50%;
     }
   }
 }

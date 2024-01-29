@@ -15,7 +15,7 @@ interface CustomModalProps {
 
 const CustomModal: React.FC<CustomModalProps> = function (props) {
   const { data, isLoading, error } = useFetch(
-    `volumes?q=${props.query}&orderBy=relevance&maxResults=10`
+    `volumes?q=${props.query}&orderBy=relevance&projection=lite&printType=books&langRestrict=en`
   );
 
   return (
