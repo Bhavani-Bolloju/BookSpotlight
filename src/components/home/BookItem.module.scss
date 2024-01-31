@@ -1,23 +1,58 @@
 .book {
+  position: relative;
   display: flex;
-  flex-direction: column;
-  align-items: start;
   justify-content: center;
   text-decoration: none;
   color: inherit;
   font-family: inherit;
+  padding: 10px 0;
+  transition: all 0.2s;
   width: 100%;
-  transition: transform 0.2s;
-  padding: 30px;
+  border-radius: 5px;
+  background-color: var(--color-background);
 
   button {
-    background-color: transparent;
-    color: inherit;
+    &:active,
+    &:focus,
+    &:focus-visible {
+      background-color: transparent;
+      border: none;
+      outline: none;
+      outline-offset: none;
+      width: 100%;
+    }
+  }
+
+  &:hover {
+    transform: scale(1.05);
+
+    .book__bookmark {
+      top: 2%;
+    }
+  }
+
+  // z-index: 1000;
+
+  &__bookmark {
+    position: absolute;
+    outline: none;
     border: none;
+    top: 0px;
+    right: 15%;
+    z-index: 500;
+    background-color: transparent;
+    transition: all 0.2s;
+
+    svg {
+      height: 30px;
+      fill: var(--color-2);
+      color: var(--color-3);
+    }
 
     &:hover {
-      background-color: transparent !important;
-      color: inherit;
+      svg {
+        fill: var(--color-3);
+      }
     }
   }
 
@@ -37,7 +72,8 @@
     }
   }
   &__title {
-    text-align: start;
+    // text-align: start;
+
     font-size: 16px;
     width: 90%;
     margin: 0;
@@ -55,7 +91,6 @@
   &__author {
     font-weight: 400;
     font-size: 14px;
-    text-align: start;
     margin-top: 5px;
     color: var(--color-text-2);
     overflow: hidden;
@@ -63,10 +98,6 @@
     -webkit-line-clamp: 1;
     line-clamp: 1;
     -webkit-box-orient: vertical;
-  }
-
-  &:hover {
-    transform: scale(1.05);
   }
 }
 

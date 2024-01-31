@@ -1,6 +1,6 @@
 import React, { Ref, forwardRef } from "react";
 import { ReactNode } from "react";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 import classes from "./BookItem.module.scss";
 import Button from "react-bootstrap/Button";
 import OverlayTrigger from "react-bootstrap/OverlayTrigger";
@@ -34,8 +34,13 @@ const BookItem: React.FC<BookItemProp> = function ({
   authors,
   description
 }) {
+  const bookmarkHandler = function () {
+    console.log(id);
+  };
+
   return (
-    <Link to={`/${id}`} className={classes.book}>
+    <div className={classes["book"]}>
+      {/* <Link to={`/${id}`} className={classes["book__item"]}> */}
       <OverlayTrigger
         trigger={["hover", "focus"]}
         placement="auto"
@@ -63,7 +68,24 @@ const BookItem: React.FC<BookItemProp> = function ({
           </p>
         </Button>
       </OverlayTrigger>
-    </Link>
+      {/* </Link> */}
+      <button className={classes["book__bookmark"]} onClick={bookmarkHandler}>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          strokeWidth="1.5"
+          stroke="currentColor"
+          className="w-6 h-6"
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            d="M17.593 3.322c1.1.128 1.907 1.077 1.907 2.185V21L12 17.25 4.5 21V5.507c0-1.108.806-2.057 1.907-2.185a48.507 48.507 0 0 1 11.186 0Z"
+          />
+        </svg>
+      </button>
+    </div>
   );
 };
 

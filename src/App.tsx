@@ -8,7 +8,6 @@ import HomePage from "./pages/Homepage";
 import DetailBookPage from "./pages/DetailBookPage";
 import GenreSearchResults from "./components/search-results/GenreSearchResults";
 import AuthorSearchResults from "./components/search-results/AuthorSearchResults";
-import SearchResultsPage from "./pages/SearchResultsPage";
 
 function App() {
   const user = useContext(AuthContext);
@@ -25,7 +24,6 @@ function App() {
           <Route path="auth" element={<AuthenticationPage />} />
           <Route path="genre/:genreId" element={<GenreSearchResults />} />
           <Route path="author/:authorName" element={<AuthorSearchResults />} />
-          {/* <Route path=":id" element={<SearchResultsPage />} /> */}
         </Route>
       </Routes>
     </div>

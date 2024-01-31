@@ -90,7 +90,8 @@ const GenreSection: React.FC<GenreSectionProps> = function ({
               perPage: 5,
               arrows: true,
               pagination: false,
-              drag: "free"
+              drag: "free",
+              gap: "2rem"
             }}
           >
             {data &&
