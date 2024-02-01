@@ -1,6 +1,6 @@
 import React, { Ref, forwardRef } from "react";
 import { ReactNode } from "react";
-// import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import classes from "./BookItem.module.scss";
 import Button from "react-bootstrap/Button";
 import OverlayTrigger from "react-bootstrap/OverlayTrigger";
@@ -34,13 +34,18 @@ const BookItem: React.FC<BookItemProp> = function ({
   authors,
   description
 }) {
-  const bookmarkHandler = function () {
+  const navigate = useNavigate();
+  const bookmarkHandler = function (e) {
+    // e.prevent
     console.log(id);
+  };
+
+  const navigateHandler = function () {
+    navigate(`/${id}`);
   };
 
   return (
     <div className={classes["book"]}>
-      {/* <Link to={`/${id}`} className={classes["book__item"]}> */}
       <OverlayTrigger
         trigger={["hover", "focus"]}
         placement="auto"
@@ -58,7 +63,7 @@ const BookItem: React.FC<BookItemProp> = function ({
           </UpdatingPopover>
         }
       >
-        <Button>
+        <Button type="button" onClick={navigateHandler}>
           <div className={classes["book__image"]}>
             <img src={thumbnail} alt="" />
           </div>
@@ -68,7 +73,7 @@ const BookItem: React.FC<BookItemProp> = function ({
           </p>
         </Button>
       </OverlayTrigger>
-      {/* </Link> */}
+
       <button className={classes["book__bookmark"]} onClick={bookmarkHandler}>
         <svg
           xmlns="http://www.w3.org/2000/svg"

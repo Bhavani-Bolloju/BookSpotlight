@@ -12,9 +12,9 @@ function HomePage() {
       <HeroSection />
       <main>
         <ScienceSection />
-        {/* <BiographySection />
+        <BiographySection />
         <FictionSection />
-        <MysterySection /> */}
+        <MysterySection />
       </main>
     </section>
   );

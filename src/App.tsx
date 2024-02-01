@@ -21,7 +21,12 @@ function App() {
           <Route index element={<HomePage />} />
           <Route path=":id" element={<DetailBookPage />} />
           <Route path="home" element={<Navigate to="/" replace />} />
-          <Route path="auth" element={<AuthenticationPage />} />
+          <Route
+            path="auth"
+            element={
+              !user ? <AuthenticationPage /> : <Navigate to="/" replace />
+            }
+          />
           <Route path="genre/:genreId" element={<GenreSearchResults />} />
           <Route path="author/:authorName" element={<AuthorSearchResults />} />
         </Route>

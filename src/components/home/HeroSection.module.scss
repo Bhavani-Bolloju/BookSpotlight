@@ -1,7 +1,10 @@
 .heroSection {
   text-align: center;
   padding: 150px;
-  background: linear-gradient(var(--color-background), var(--color-2));
+  background: linear-gradient(
+    to bottom,
+    var(--color-background) var(--color-2)
+  );
 
   &__header {
     font-size: 35px;

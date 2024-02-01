@@ -1,11 +1,12 @@
 .form {
   width: 600px;
   margin: auto;
-  margin-top: 100px;
+  margin-top: 40px;
   background-color: #fff;
   padding: 100px;
   padding-top: 50px;
   box-shadow: 0 1px 20px rgba(#f5d0fe, 0.5);
+  border-radius: 10px;
 
   &__heading {
     font-size: 38px;
@@ -15,7 +16,7 @@
     text-align: center;
     background: linear-gradient(
       to bottom,
-      var(--color-2),
+      var(--color-3),
       var(--color-3),
       var(--color-text-1)
     );
@@ -28,17 +29,65 @@
   }
   input {
     margin-bottom: 20px;
-    border-color: var(--color-2);
+    border-color: var(--color-3);
+    border-width: 2px;
+    font-family: var(--font-body);
+    color: var(--color-text-1);
 
     &:focus {
       border-color: var(--color-2);
-      box-shadow: 0 0 0 0.2rem rgba(#f5d0fe, 0.5);
+      box-shadow: 0 0 0 0.2rem rgba(#f5d0fe, 1);
+    }
+
+    &:focus-visible {
+      box-shadow: none !important;
     }
   }
+  label {
+    color: var(--color-text-1) !important;
+    opacity: 0.9;
+    font-family: var(--font-body);
+  }
   button {
-    margin-top: 20px;
+    margin-top: 50px;
     position: relative;
     left: 50%;
     transform: translateX(-50%);
+  }
+
+  &__switch {
+    color: var(--color-text-1);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    justify-content: center;
+    margin-top: 20px;
+    font-size: 14px;
+    button {
+      margin: 0;
+      left: 0%;
+      transform: translateX(0%);
+      border: none;
+      background-color: transparent;
+      font-family: inherit;
+      font-weight: 500;
+      border-bottom: 2px solid var(--color-3);
+      color: inherit;
+    }
+
+    // a {
+    //   text-decoration: none;
+    //   color: var(--color-text-1);
+    //   border-bottom: 2px solid var(--color-3);
+    // }
+  }
+
+  &__error {
+    color: var(--color-error);
+    text-align: center;
+  }
+
+  &__loading {
+    text-align: center;
   }
 }
