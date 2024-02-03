@@ -3,7 +3,8 @@
   padding: 150px;
   background: linear-gradient(
     to bottom,
-    var(--color-background) var(--color-2)
+    var(--color-background),
+    var(--color-2)
   );
 
   &__header {

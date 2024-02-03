@@ -1,6 +1,6 @@
 import React from "react";
 import Modal from "react-bootstrap/Modal";
-import useFetch from "../custom-fetch/useFetch";
+import useFetch from "../custom-hook/useFetch";
 import CustomButton from "./Button";
 import BookItem from "../home/BookItem";
 import { Book } from "../home/GenreSection";

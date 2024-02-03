@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 
 import classes from "./DetailBookPage.module.scss";
 import DOMPurify from "dompurify";
-import useFetch from "../components/custom-fetch/useFetch";
+import useFetch from "../components/custom-hook/useFetch";
 import Spinner from "react-bootstrap/esm/Spinner";
 import RecommendedBooks from "../components/detail-book/RecommendedBooks";
 

@@ -1,4 +1,4 @@
-import useFetch from "../custom-fetch/useFetch";
+import useFetch from "../custom-hook/useFetch";
 
 import { Splide, SplideSlide } from "@splidejs/react-splide";
 import "@splidejs/react-splide/css";
@@ -97,7 +97,7 @@ const GenreSection: React.FC<GenreSectionProps> = function ({
                       id={book?.id}
                       thumbnail={book?.volumeInfo?.imageLinks?.thumbnail}
                       title={book?.volumeInfo?.title}
-                      authors={book?.volumeInfo?.authors}
+                      author={book?.volumeInfo?.authors}
                       description={book?.volumeInfo?.description}
                     />
                   </SplideSlide>
