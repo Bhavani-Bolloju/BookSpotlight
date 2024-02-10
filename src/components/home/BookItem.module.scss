@@ -50,7 +50,13 @@
 
     &:hover {
       svg {
-        fill: var(--color-3);
+        fill: var(--color-text-2);
+      }
+    }
+
+    &--active {
+      svg {
+        fill: var(--color-text-2);
       }
     }
   }

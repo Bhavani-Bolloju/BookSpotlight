@@ -1,12 +1,20 @@
-// import React from 'react'
+import { useState, useEffect, useContext } from "react";
 import { useParams } from "react-router-dom";
 
-import classes from "./DetailBookPage.module.scss";
 import DOMPurify from "dompurify";
 import useFetch from "../components/custom-hook/useFetch";
 import Spinner from "react-bootstrap/esm/Spinner";
 import RecommendedBooks from "../components/detail-book/RecommendedBooks";
 
+import { AuthContext } from "../context/AuthContext";
+
+import useUser from "../components/custom-hook/useUser";
+import {
+  getBookmarks,
+  modifyBookmarks,
+  getBookmarkedBook
+} from "../firebase/services";
+import classes from "./DetailBookPage.module.scss";
 interface DescriptionProp {
   htmlContent?: string;
 }
@@ -25,7 +33,70 @@ function DetailBookPage() {
   const params = useParams();
   const id = params?.id;
 
-  const { data: book, error, isLoading } = useFetch(`volumes/${id}`);
+  const {
+    data: book,
+    error,
+    isLoading
+  } = useFetch(`volumes/${id}?projection=full&printType=books&langRestrict=en`);
+
+  const [bookmarks, setBookmarks] = useState<string[] | []>([]);
+
+  const [isBookmarked, setIsBookmarked] = useState(false);
+
+  const ctx = useContext(AuthContext);
+  const user = useUser(ctx?.uid);
+
+  useEffect(() => {
+    const bookmarks = async function (docId: string) {
+      const req = await getBookmarks(docId);
+      console.log("setting bookmarks");
+      setBookmarks(req);
+    };
+
+    if (user && user?.docId) {
+      bookmarks(user?.docId);
+    }
+  }, [user]);
+
+  useEffect(() => {
+    if (bookmarks && id) {
+      const value = bookmarks.some((bookmark) => bookmark === id);
+      if (value) {
+        setIsBookmarked(true);
+      }
+    }
+  }, [bookmarks, id]);
+
+  const bookmarkHandler = async function () {
+    setIsBookmarked((prev) => !prev);
+
+    if (!user || !id) return;
+    let bookDetails;
+
+    const fetchedBookmark = await getBookmarkedBook(user?.docId, id);
+
+    const newBookmark = {
+      id: book?.id,
+      thumbnail: book?.volumeInfo?.imageLinks?.thumbnail,
+      description: book?.volumeInfo?.description,
+      author: book?.volumeInfo?.authors[0],
+      title: book?.volumeInfo?.title
+    };
+
+    if (fetchedBookmark) {
+      bookDetails = fetchedBookmark;
+    } else {
+      bookDetails = newBookmark;
+    }
+    await modifyBookmarks(user?.docId as string, bookDetails, isBookmarked);
+
+    const req = await getBookmarks(user?.docId);
+    setBookmarks(req);
+  };
+
+  // const toggleBookmarkHandler = function () {};
+
+  // console.log(bookmarks);
 
   return (
     <section className={classes.book}>
@@ -43,6 +114,27 @@ function DetailBookPage() {
               src={book?.volumeInfo?.imageLinks?.thumbnail}
               alt={book?.volumeInfo?.title}
             />
+            <button
+              className={`${classes["book__bookmark"]} ${
+                isBookmarked && classes["book__bookmark--active"]
+              }`}
+              onClick={bookmarkHandler}
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                strokeWidth="1.5"
+                stroke="currentColor"
+                className="w-6 h-6"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M17.593 3.322c1.1.128 1.907 1.077 1.907 2.185V21L12 17.25 4.5 21V5.507c0-1.108.806-2.057 1.907-2.185a48.507 48.507 0 0 1 11.186 0Z"
+                />
+              </svg>
+            </button>
           </div>
         )}
         {book && (
@@ -97,6 +189,7 @@ function DetailBookPage() {
         <RecommendedBooks
           authors={book?.volumeInfo?.authors}
           categories={book?.volumeInfo?.categories}
+          bookmarks={bookmarks}
         />
       )}
     </section>
@@ -118,4 +211,9 @@ key=mykey
 
 
 argument to pass = 
+*/
+
+/*
+
+
 */

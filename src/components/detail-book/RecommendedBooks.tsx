@@ -7,10 +7,12 @@ import classes from "./RecommendedBooks.module.scss";
 interface RecommendedBooksProp {
   authors: string[];
   categories: string[];
+  bookmarks: string[];
 }
 const RecommendedBooks: React.FC<RecommendedBooksProp> = function ({
   authors,
-  categories
+  categories,
+  bookmarks
 }) {
   const author = authors?.[0] || "";
   const reqAuthor = author.split(" ").join("+");
@@ -22,6 +24,7 @@ const RecommendedBooks: React.FC<RecommendedBooksProp> = function ({
           heading="recommended books"
           name="author"
           title={reqAuthor}
+          bookmarks={bookmarks}
         />
       )}
       {!authors && categories && (
@@ -29,6 +32,7 @@ const RecommendedBooks: React.FC<RecommendedBooksProp> = function ({
           heading="Similar Books"
           name="genre"
           title={categories?.[0]}
+          bookmarks={bookmarks}
         />
       )}
     </div>

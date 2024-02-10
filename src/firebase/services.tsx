@@ -6,7 +6,6 @@ import {
   getDoc,
   arrayRemove
 } from "firebase/firestore";
-import { BookItemProp } from "../components/home/BookItem";
 
 // interface BookDetailsProp {
 //   title: string;
@@ -14,8 +13,12 @@ import { BookItemProp } from "../components/home/BookItem";
 //   author: string;
 // }
 
-interface BookDetailsProp extends Omit<BookItemProp, "author"> {
+interface BookDetailsProp {
   author: string;
+  description: string;
+  id: string;
+  thumbnail: string;
+  title: string;
 }
 
 // const book: BookDetailsProp = {
@@ -33,15 +36,10 @@ export const getBookmarks = async function (docId: string) {
 
 export const modifyBookmarks = async function (
   docId: string,
-  bookDetails: BookDetailsProp
+  bookDetails: BookDetailsProp,
+  isBookmarked: boolean
 ) {
   const userDocRef = doc(db, "users", docId);
-
-  const bookmarks = await getBookmarks(docId);
-
-  const isBookmarked = bookmarks.some(
-    (bookmark: string) => bookmark === bookDetails.id
-  );
 
   if (isBookmarked) {
     // Remove the book from bookmarks
@@ -51,10 +49,17 @@ export const modifyBookmarks = async function (
     await updateDoc(userDocRef, { bookmarks: arrayUnion(bookDetails) });
   }
 };
-// export const modifyBookmarks = async function (
-//   docId: string,
-//   bookDetails: BookDetailsProp
-// ) {
-//   const docRef = doc(db, "users", docId);
-//   await updateDoc(docRef, { bookmarks: arrayUnion(bookDetails) });
-// };
+
+export const getBookmarkedBook = async function (
+  docId: string,
+  bookmarkId: string
+) {
+  const userDocRef = doc(db, "users", docId);
+  const userDocSnapshot = await getDoc(userDocRef);
+  const snapshot = userDocSnapshot.data()?.bookmarks;
+
+  const bookmarked = snapshot?.find(
+    (book: BookDetailsProp) => book.id === bookmarkId
+  );
+  return bookmarked;
+};

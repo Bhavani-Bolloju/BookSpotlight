@@ -40,7 +40,7 @@ const CustomModal: React.FC<CustomModalProps> = function (props) {
                   id={book?.id}
                   thumbnail={book?.volumeInfo?.imageLinks?.thumbnail}
                   title={book?.volumeInfo?.title}
-                  authors={book?.volumeInfo?.authors}
+                  author={book?.volumeInfo?.authors}
                   description={book?.volumeInfo?.description}
                 />
               );

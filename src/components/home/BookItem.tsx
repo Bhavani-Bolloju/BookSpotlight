@@ -1,4 +1,4 @@
-import React, { Ref, forwardRef, useContext, useState } from "react";
+import React, { Ref, forwardRef, useContext, useEffect, useState } from "react";
 import { ReactNode } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import classes from "./BookItem.module.scss";
@@ -9,6 +9,7 @@ import { AuthContext } from "../../context/AuthContext";
 import Modal from "react-bootstrap/Modal";
 import useUser from "../custom-hook/useUser";
 import { modifyBookmarks } from "../../firebase/services";
+import { getBookmarkedBook } from "../../firebase/services";
 
 export interface BookItemProp {
   id: string;
@@ -17,6 +18,7 @@ export interface BookItemProp {
   author: string[];
 
   description: string;
+  bookmarked: boolean;
 }
 
 interface UpdatingPopoverProps extends PopoverProps {
@@ -37,9 +39,12 @@ const BookItem: React.FC<BookItemProp> = function ({
   thumbnail,
   title,
   author,
-  description
+  description,
+  bookmarked
 }) {
   const [show, setShow] = useState(false);
+
+  const [isBookmarked, setIsBookmarked] = useState(bookmarked);
 
   const navigate = useNavigate();
 
@@ -48,18 +53,33 @@ const BookItem: React.FC<BookItemProp> = function ({
   const user = useUser(ctx?.uid);
 
   const handleClose = () => setShow(false);
-  // const handleShow = () => setShow(true);
+
+  useEffect(() => {
+    setIsBookmarked(bookmarked);
+  }, [bookmarked]);
 
   const bookmarkHandler = async function () {
     if (ctx && user) {
       //add to the bookmarks list
-      await modifyBookmarks(user?.docId, {
+      setIsBookmarked((prev) => !prev);
+      let bookDetails;
+      const fetchedBookmark = await getBookmarkedBook(user?.docId, id);
+
+      const bookData = {
         title,
         id,
         author: author[0],
         thumbnail,
         description
-      });
+      };
+
+      if (fetchedBookmark) {
+        bookDetails = fetchedBookmark;
+      } else {
+        bookDetails = bookData;
+      }
+
+      await modifyBookmarks(user?.docId, bookDetails, isBookmarked);
     } else {
       setShow(true);
     }
@@ -100,7 +120,12 @@ const BookItem: React.FC<BookItemProp> = function ({
           </Button>
         </OverlayTrigger>
 
-        <button className={classes["book__bookmark"]} onClick={bookmarkHandler}>
+        <button
+          className={`${classes["book__bookmark"]} ${
+            isBookmarked && classes["book__bookmark--active"]
+          }`}
+          onClick={bookmarkHandler}
+        >
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"

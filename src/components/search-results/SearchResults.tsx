@@ -12,11 +12,13 @@ import React, { useCallback, useEffect, useRef, useState } from "react";
 interface SearchResultsProps {
   title: string;
   genre: string;
+  bookmarks: string[];
 }
 
 const SearchResults: React.FC<SearchResultsProps> = function ({
   title,
-  genre
+  genre,
+  bookmarks
 }) {
   const maxResults = 10;
   const index = useRef<number>(0);
@@ -108,8 +110,9 @@ const SearchResults: React.FC<SearchResultsProps> = function ({
                   id={book?.id}
                   thumbnail={book?.volumeInfo?.imageLinks?.thumbnail}
                   title={book?.volumeInfo?.title}
-                  authors={book?.volumeInfo?.authors}
+                  author={book?.volumeInfo?.authors}
                   description={book?.volumeInfo?.description}
+                  bookmarked={bookmarks?.some((item) => item === book?.id)}
                 />
               </li>
             ))}
