@@ -1,4 +1,3 @@
-// import { useEffect } from "react";
 import { useContext } from "react";
 import { AuthContext } from "./context/AuthContext";
 import { Routes, Route, Navigate } from "react-router-dom";
@@ -8,7 +7,7 @@ import HomePage from "./pages/Homepage";
 import DetailBookPage from "./pages/DetailBookPage";
 import GenreSearchResults from "./components/search-results/GenreSearchResults";
 import AuthorSearchResults from "./components/search-results/AuthorSearchResults";
-// import useUser from "./components/custom-hook/useUser";
+import BookmarksPage from "./pages/BookmarksPage";
 
 function App() {
   const userAuth = useContext(AuthContext);
@@ -29,6 +28,7 @@ function App() {
           />
           <Route path="genre/:genreId" element={<GenreSearchResults />} />
           <Route path="author/:authorName" element={<AuthorSearchResults />} />
+          <Route path="/bookmarks" element={<BookmarksPage />} />
         </Route>
       </Routes>
     </div>

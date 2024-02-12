@@ -12,7 +12,10 @@ import { BookDetailsProp } from "../../firebase/services";
 interface BookOverviewProps {
   id: string;
   bookmarks: string[];
-  toggleBookmark: (bookDetails: BookDetailsProp, isBookmarked: boolean) => void;
+  toggleBookmark: (
+    bookDetails: BookDetailsProp,
+    isBookmarked: boolean
+  ) => Promise<void>;
 }
 interface DescriptionProp {
   htmlContent?: string;

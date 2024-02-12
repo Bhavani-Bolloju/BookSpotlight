@@ -9,7 +9,10 @@ interface RecommendedBooksProp {
   authors: string[];
   categories: string[];
   bookmarks: string[];
-  toggleBookmark: (bookDetails: BookDetailsProp, isBookmarked: boolean) => void;
+  toggleBookmark: (
+    bookDetails: BookDetailsProp,
+    isBookmarked: boolean
+  ) => Promise<void>;
 }
 const RecommendedBooks: React.FC<RecommendedBooksProp> = function ({
   authors,
