@@ -7,6 +7,9 @@ export const apiKey = import.meta.env.VITE_GOOGLE_API_KEY;
 const useFetch = function (url: string) {
   const key = `https://www.googleapis.com/books/v1/${url}`;
   // const key = `https://www.googleapis.com/books/v1/${url}key=${apiKey}`;
+  // console.log(key);
+
+  // &langRestrict=en&orderBy=newest&projection=lite&printType=books&langRestrict=en
 
   const { data, error, isLoading } = useSWR(key, fetcher);
 
@@ -35,3 +38,15 @@ export default useFetch;
 // https://www.googleapis.com/books/v1/
 // volumes / ${ id }?
 // key = ${ googleBooksApiKey } `
+
+/*
+
+//bulk  
+https://www.googleapis.com/books/v1/volumes?q=subject:science&maxResults=10&orderBy=newest&projection=lite&printType=books&langRestrict=en
+
+
+
+//single
+https://www.googleapis.com/books/v1/volumes/tymCEAAAQBAJ?projection=lite&printType=books&langRestrict=en
+
+*/

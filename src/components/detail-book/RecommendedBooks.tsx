@@ -3,14 +3,19 @@
 import React from "react";
 import GenreSection from "../home/GenreSection";
 import classes from "./RecommendedBooks.module.scss";
+import { BookDetailsProp } from "../../firebase/services";
 
 interface RecommendedBooksProp {
   authors: string[];
   categories: string[];
+  bookmarks: string[];
+  toggleBookmark: (bookDetails: BookDetailsProp, isBookmarked: boolean) => void;
 }
 const RecommendedBooks: React.FC<RecommendedBooksProp> = function ({
   authors,
-  categories
+  categories,
+  bookmarks,
+  toggleBookmark
 }) {
   const author = authors?.[0] || "";
   const reqAuthor = author.split(" ").join("+");
@@ -22,6 +27,8 @@ const RecommendedBooks: React.FC<RecommendedBooksProp> = function ({
           heading="recommended books"
           name="author"
           title={reqAuthor}
+          bookmarks={bookmarks}
+          toggleBookmark={toggleBookmark}
         />
       )}
       {!authors && categories && (
@@ -29,6 +36,8 @@ const RecommendedBooks: React.FC<RecommendedBooksProp> = function ({
           heading="Similar Books"
           name="genre"
           title={categories?.[0]}
+          bookmarks={bookmarks}
+          toggleBookmark={toggleBookmark}
         />
       )}
     </div>

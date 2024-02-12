@@ -1,19 +1,19 @@
-import useFetch from "../custom-fetch/useFetch";
-
+import useFetch from "../custom-hook/useFetch";
+import React from "react";
 import { Splide, SplideSlide } from "@splidejs/react-splide";
 import "@splidejs/react-splide/css";
 
 import Spinner from "react-bootstrap/Spinner";
 import { useNavigate } from "react-router-dom";
 
-import React from "react";
-
 import CustomButton from "../ui/Button";
 import rightDouble from "../../assets/right-double-fill.svg";
 
 import BookItem from "./BookItem";
+import { BookDetailsProp } from "../../firebase/services";
 
 import classes from "./GenreSection.module.scss";
+
 interface ImageLinks {
   thumbnail: string;
 }
@@ -21,9 +21,7 @@ interface ImageLinks {
 interface VolumeInfo {
   title: string;
   imageLinks: ImageLinks;
-
   authors: string[];
-
   description: string;
 }
 
@@ -36,26 +34,32 @@ interface GenreSectionProps {
   name: string;
   title: string;
   heading?: string;
+  bookmarks: string[] | [];
+
+  toggleBookmark: (
+    bookDetails: BookDetailsProp,
+    isBookmarked: boolean
+  ) => Promise<void>;
 }
 
 const GenreSection: React.FC<GenreSectionProps> = function ({
   name,
   title,
-  heading
+  heading,
+  bookmarks,
+  toggleBookmark
 }) {
   const maxResults = 10;
   let URL: string = `volumes?q=subject:science&maxResults=${maxResults}`;
   if (name === "genre") {
-    URL = `volumes?q=subject:${title}&maxResults=${maxResults}&orderBy=newest&projection=lite&printType=books&langRestrict=en`;
+    URL = `volumes?q=subject:${title}&maxResults=${maxResults}&orderBy=newest&projection=full&printType=books&langRestrict=en`;
   }
 
   if (name === "author") {
-    URL = `volumes?q=inauthor:${title}&printType=books&langRestrict=en&orderBy=newest&projection=lite&printType=books&langRestrict=en`;
+    URL = `volumes?q=inauthor:${title}&maxResults=${maxResults}&orderBy=newest&projection=full&printType=books&langRestrict=en`;
   }
 
   const { data, isLoading, error } = useFetch(URL);
-
-  console.log(data);
 
   const navigate = useNavigate();
   const navigateHandler = function () {
@@ -63,7 +67,7 @@ const GenreSection: React.FC<GenreSectionProps> = function ({
     navigate(`/${name}/${encodeURL}`);
   };
 
-  // console.log(data);
+  // console.log(bookmarks, "genre section");
 
   return (
     <section className={classes.genre}>
@@ -90,19 +94,24 @@ const GenreSection: React.FC<GenreSectionProps> = function ({
               perPage: 5,
               arrows: true,
               pagination: false,
-              drag: "free"
+              drag: "free",
+              gap: "2rem"
             }}
           >
             {data &&
               data?.items?.map((book: Book, i: number) => {
+                const bookId: string = book?.id;
+
                 return (
                   <SplideSlide key={book.id + "" + i}>
                     <BookItem
-                      id={book?.id}
+                      id={bookId}
                       thumbnail={book?.volumeInfo?.imageLinks?.thumbnail}
                       title={book?.volumeInfo?.title}
-                      authors={book?.volumeInfo?.authors}
+                      author={book?.volumeInfo?.authors}
                       description={book?.volumeInfo?.description}
+                      bookmarked={bookmarks?.some((item) => item === bookId)}
+                      toggleBookmark={toggleBookmark}
                     />
                   </SplideSlide>
                 );

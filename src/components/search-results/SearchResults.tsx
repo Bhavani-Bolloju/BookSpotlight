@@ -7,16 +7,24 @@ import classes from "./SearchResults.module.scss";
 import BookItem from "../home/BookItem";
 import { Book } from "../home/GenreSection";
 import React, { useCallback, useEffect, useRef, useState } from "react";
+import { BookDetailsProp } from "../../firebase/services";
 // import debounce from "lodash/debounce";
 
 interface SearchResultsProps {
   title: string;
   genre: string;
+  bookmarks: string[];
+  toggleBookmark: (
+    bookDetails: BookDetailsProp,
+    isBookmarked: boolean
+  ) => Promise<void>;
 }
 
 const SearchResults: React.FC<SearchResultsProps> = function ({
   title,
-  genre
+  genre,
+  bookmarks,
+  toggleBookmark
 }) {
   const maxResults = 10;
   const index = useRef<number>(0);
@@ -108,8 +116,10 @@ const SearchResults: React.FC<SearchResultsProps> = function ({
                   id={book?.id}
                   thumbnail={book?.volumeInfo?.imageLinks?.thumbnail}
                   title={book?.volumeInfo?.title}
-                  authors={book?.volumeInfo?.authors}
+                  author={book?.volumeInfo?.authors}
                   description={book?.volumeInfo?.description}
+                  bookmarked={bookmarks?.some((item) => item === book?.id)}
+                  toggleBookmark={toggleBookmark}
                 />
               </li>
             ))}

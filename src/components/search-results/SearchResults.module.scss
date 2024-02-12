@@ -1,7 +1,7 @@
 .searchResults {
-  width: 90%;
+  width: 80%;
   margin: auto;
-  height: 100vh;
+  // height: 100vh;
 
   &__container {
     text-align: center;
@@ -17,14 +17,18 @@
   }
 
   &__list {
-    display: flex;
-    flex-wrap: wrap;
     list-style: none;
-    justify-content: center;
-    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(18%, 1fr));
+    gap: 20px;
+    row-gap: 40px;
 
     li {
-      flex-basis: 20%;
+      display: flex;
+      padding: 0;
+      button {
+        padding: 0;
+      }
     }
   }
 

@@ -8,11 +8,10 @@ import HomePage from "./pages/Homepage";
 import DetailBookPage from "./pages/DetailBookPage";
 import GenreSearchResults from "./components/search-results/GenreSearchResults";
 import AuthorSearchResults from "./components/search-results/AuthorSearchResults";
-import SearchResultsPage from "./pages/SearchResultsPage";
+// import useUser from "./components/custom-hook/useUser";
 
 function App() {
-  const user = useContext(AuthContext);
-  console.log(user);
+  const userAuth = useContext(AuthContext);
 
   return (
     <div>
@@ -22,10 +21,14 @@ function App() {
           <Route index element={<HomePage />} />
           <Route path=":id" element={<DetailBookPage />} />
           <Route path="home" element={<Navigate to="/" replace />} />
-          <Route path="auth" element={<AuthenticationPage />} />
+          <Route
+            path="auth"
+            element={
+              !userAuth ? <AuthenticationPage /> : <Navigate to="/" replace />
+            }
+          />
           <Route path="genre/:genreId" element={<GenreSearchResults />} />
           <Route path="author/:authorName" element={<AuthorSearchResults />} />
-          {/* <Route path=":id" element={<SearchResultsPage />} /> */}
         </Route>
       </Routes>
     </div>
