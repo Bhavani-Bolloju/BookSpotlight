@@ -13,7 +13,7 @@ import {
 //   author: string;
 // }
 
-interface BookDetailsProp {
+export interface BookDetailsProp {
   author: string;
   description: string;
   id: string;

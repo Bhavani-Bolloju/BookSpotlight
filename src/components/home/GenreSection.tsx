@@ -10,6 +10,7 @@ import CustomButton from "../ui/Button";
 import rightDouble from "../../assets/right-double-fill.svg";
 
 import BookItem from "./BookItem";
+import { BookDetailsProp } from "../../firebase/services";
 
 import classes from "./GenreSection.module.scss";
 
@@ -20,9 +21,7 @@ interface ImageLinks {
 interface VolumeInfo {
   title: string;
   imageLinks: ImageLinks;
-
   authors: string[];
-
   description: string;
 }
 
@@ -36,13 +35,19 @@ interface GenreSectionProps {
   title: string;
   heading?: string;
   bookmarks: string[] | [];
+
+  toggleBookmark: (
+    bookDetails: BookDetailsProp,
+    isBookmarked: boolean
+  ) => Promise<void>;
 }
 
 const GenreSection: React.FC<GenreSectionProps> = function ({
   name,
   title,
   heading,
-  bookmarks
+  bookmarks,
+  toggleBookmark
 }) {
   const maxResults = 10;
   let URL: string = `volumes?q=subject:science&maxResults=${maxResults}`;
@@ -106,6 +111,7 @@ const GenreSection: React.FC<GenreSectionProps> = function ({
                       author={book?.volumeInfo?.authors}
                       description={book?.volumeInfo?.description}
                       bookmarked={bookmarks?.some((item) => item === bookId)}
+                      toggleBookmark={toggleBookmark}
                     />
                   </SplideSlide>
                 );

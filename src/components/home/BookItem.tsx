@@ -8,8 +8,9 @@ import Popover, { PopoverProps } from "react-bootstrap/Popover";
 import { AuthContext } from "../../context/AuthContext";
 import Modal from "react-bootstrap/Modal";
 import useUser from "../custom-hook/useUser";
-import { modifyBookmarks } from "../../firebase/services";
+
 import { getBookmarkedBook } from "../../firebase/services";
+import { BookDetailsProp } from "../../firebase/services";
 
 export interface BookItemProp {
   id: string;
@@ -19,6 +20,10 @@ export interface BookItemProp {
 
   description: string;
   bookmarked: boolean;
+  toggleBookmark: (
+    bookDetails: BookDetailsProp,
+    isBookmarked: boolean
+  ) => Promise<void>;
 }
 
 interface UpdatingPopoverProps extends PopoverProps {
@@ -40,7 +45,8 @@ const BookItem: React.FC<BookItemProp> = function ({
   title,
   author,
   description,
-  bookmarked
+  bookmarked,
+  toggleBookmark
 }) {
   const [show, setShow] = useState(false);
 
@@ -64,7 +70,6 @@ const BookItem: React.FC<BookItemProp> = function ({
       setIsBookmarked((prev) => !prev);
       let bookDetails;
       const fetchedBookmark = await getBookmarkedBook(user?.docId, id);
-
       const bookData = {
         title,
         id,
@@ -72,14 +77,13 @@ const BookItem: React.FC<BookItemProp> = function ({
         thumbnail,
         description
       };
-
       if (fetchedBookmark) {
         bookDetails = fetchedBookmark;
       } else {
         bookDetails = bookData;
       }
 
-      await modifyBookmarks(user?.docId, bookDetails, isBookmarked);
+      toggleBookmark(bookDetails, isBookmarked);
     } else {
       setShow(true);
     }

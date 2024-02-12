@@ -5,6 +5,8 @@ import { useState, useContext, useEffect } from "react";
 import useUser from "../custom-hook/useUser";
 import { AuthContext } from "../../context/AuthContext";
 import { getBookmarks } from "../../firebase/services";
+import { BookDetailsProp } from "../../firebase/services";
+import { modifyBookmarks } from "../../firebase/services";
 
 function GenreSearchResults() {
   const params = useParams();
@@ -27,6 +29,18 @@ function GenreSearchResults() {
     }
   }, [user]);
 
+  const toggleBookmarkHandler = async function (
+    bookDetails: BookDetailsProp,
+    isBookmarked: boolean
+  ) {
+    if (!user) return;
+
+    await modifyBookmarks(user?.docId, bookDetails, isBookmarked);
+
+    const req = await getBookmarks(user?.docId);
+    setBookmarks(req);
+  };
+
   return (
     <div>
       {genre && (
@@ -34,6 +48,7 @@ function GenreSearchResults() {
           genre={genre}
           title="genre"
           bookmarks={bookmarks}
+          toggleBookmark={toggleBookmarkHandler}
         ></SearchResults>
       )}
     </div>

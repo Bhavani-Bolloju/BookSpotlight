@@ -30,19 +30,14 @@
 .search {
   &__list {
     width: 100%;
-    display: flex;
-    flex-wrap: wrap;
-    align-items: start;
-    justify-content: start;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
     height: 60vh;
     overflow-y: scroll;
     overflow-x: hidden;
     margin: 0;
     padding: 0px 30px;
-
-    a {
-      padding: 10px;
-    }
+    gap: 20px;
 
     &::-webkit-scrollbar {
       width: 6px;
@@ -59,10 +54,10 @@
       opacity: 0.8;
     }
 
-    a {
-      flex-grow: 1;
-      flex-basis: 10%;
-      max-width: 50%;
-    }
+    // a {
+    //   flex-grow: 1;
+    //   flex-basis: 10%;
+    //   max-width: 50%;
+    // }
   }
 }
