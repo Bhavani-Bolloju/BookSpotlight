@@ -1,7 +1,12 @@
 import GenreSection from "./GenreSection";
+import { BookDetailsProp } from "../../firebase/services";
 
 interface BookmarksProp {
   bookmarks: string[];
+  toggleBookmark: (
+    bookDetails: BookDetailsProp,
+    isBookmarked: boolean
+  ) => Promise<void>;
 }
 
 const FictionSection = function (props: BookmarksProp) {
@@ -14,6 +19,7 @@ const FictionSection = function (props: BookmarksProp) {
       title={genre}
       name="genre"
       bookmarks={props.bookmarks}
+      toggleBookmark={props.toggleBookmark}
     ></GenreSection>
   );
 };

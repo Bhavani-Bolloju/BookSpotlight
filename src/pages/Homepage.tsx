@@ -50,9 +50,18 @@ function HomePage() {
           bookmarks={bookmarks}
           toggleBookmark={toggleBookmarkHandler}
         />
-        <BiographySection bookmarks={bookmarks} />
-        <FictionSection bookmarks={bookmarks} />
-        <MysterySection bookmarks={bookmarks} />
+        <BiographySection
+          bookmarks={bookmarks}
+          toggleBookmark={toggleBookmarkHandler}
+        />
+        <FictionSection
+          bookmarks={bookmarks}
+          toggleBookmark={toggleBookmarkHandler}
+        />
+        <MysterySection
+          bookmarks={bookmarks}
+          toggleBookmark={toggleBookmarkHandler}
+        />
       </main>
     </section>
   );

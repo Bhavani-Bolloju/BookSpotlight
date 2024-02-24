@@ -3,7 +3,8 @@ import { useParams } from "react-router-dom";
 import SearchResults from "./SearchResults";
 import { AuthContext } from "../../context/AuthContext";
 import useUser from "../custom-hook/useUser";
-import { getBookmarks } from "../../firebase/services";
+import { getBookmarks, modifyBookmarks } from "../../firebase/services";
+import { BookDetailsProp } from "../../firebase/services";
 
 function AuthorSearchResults() {
   const params = useParams();
@@ -25,6 +26,17 @@ function AuthorSearchResults() {
       bookmarks(user?.docId);
     }
   }, [user]);
+  const toggleBookmarkHandler = async function (
+    bookDetails: BookDetailsProp,
+    isBookmarked: boolean
+  ) {
+    if (!user) return;
+
+    await modifyBookmarks(user?.docId, bookDetails, isBookmarked);
+
+    const req = await getBookmarks(user?.docId);
+    setBookmarks(req);
+  };
 
   return (
     <div>
@@ -33,7 +45,8 @@ function AuthorSearchResults() {
           genre={genre}
           title="author"
           bookmarks={bookmarks}
-        ></SearchResults>
+          toggleBookmark={toggleBookmarkHandler}
+        />
       )}
     </div>
   );
