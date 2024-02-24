@@ -17,6 +17,7 @@ function HeaderNavigation() {
 
   const logoutHandler = function () {
     signOut(auth);
+    localStorage.removeItem("token");
   };
 
   return (
@@ -30,7 +31,7 @@ function HeaderNavigation() {
           <Nav className={` ${classes["navbar__links"]}`}>
             <Link to="/home">Home</Link>
             {userAuth !== null && <Link to="/bookmarks">Bookmarks</Link>}
-            {userAuth !== null && <Link to="/goals">Goals</Link>}
+            {/* {userAuth !== null && <Link to="/goals">Goals</Link>} */}
             {userAuth == null && (
               <CustomButton
                 type="button"
