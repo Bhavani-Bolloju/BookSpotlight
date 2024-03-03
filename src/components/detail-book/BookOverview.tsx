@@ -1,5 +1,5 @@
 import { useState, useEffect, useContext } from "react";
-import classes from "./BookOverview.module.scss";
+
 import useFetch from "../custom-hook/useFetch";
 import { Spinner } from "react-bootstrap";
 import DOMPurify from "dompurify";
@@ -7,7 +7,12 @@ import { AuthContext } from "../../context/AuthContext";
 import useUser from "../custom-hook/useUser";
 import { getBookmarkedBook } from "../../firebase/services";
 import RecommendedBooks from "./RecommendedBooks";
+import Modal from "react-bootstrap/Modal";
 import { BookDetailsProp } from "../../firebase/services";
+import { TertiaryHeader } from "../ui/Headings";
+import { Link } from "react-router-dom";
+
+import classes from "./BookOverview.module.scss";
 
 interface BookOverviewProps {
   id: string;
@@ -38,6 +43,7 @@ function BookOverview({ id, bookmarks, toggleBookmark }: BookOverviewProps) {
   } = useFetch(`volumes/${id}?projection=full&printType=books&langRestrict=en`);
 
   const [isBookmarked, setIsBookmarked] = useState(false);
+  const [show, setShow] = useState(false);
 
   const ctx = useContext(AuthContext);
   const user = useUser(ctx?.uid);
@@ -45,16 +51,18 @@ function BookOverview({ id, bookmarks, toggleBookmark }: BookOverviewProps) {
   useEffect(() => {
     if (bookmarks && id) {
       const value = bookmarks.some((bookmark) => bookmark === id);
-      // if (value) {
+
       setIsBookmarked(value ? true : false);
-      // }
     }
   }, [bookmarks, id]);
 
-  const bookmarkHandler = async function () {
-    // setIsBookmarked((prev) => !prev);
+  const handleClose = () => setShow(false);
 
-    if (!user || !id) return;
+  const bookmarkHandler = async function () {
+    if (!user || !id) {
+      setShow(true);
+      return;
+    }
     let bookDetails;
 
     const fetchedBookmark = await getBookmarkedBook(user?.docId, id);
@@ -117,9 +125,7 @@ function BookOverview({ id, bookmarks, toggleBookmark }: BookOverviewProps) {
         )}
         {book && (
           <div className={classes["book__content"]}>
-            <h2 className={classes["book__title"]}>
-              {book?.volumeInfo?.title}
-            </h2>
+            <TertiaryHeader>{book?.volumeInfo?.title}</TertiaryHeader>
             <p className={classes["book__authors"]}>
               by{" "}
               {book?.volumeInfo?.authors
@@ -170,6 +176,14 @@ function BookOverview({ id, bookmarks, toggleBookmark }: BookOverviewProps) {
           toggleBookmark={toggleBookmark}
         />
       )}
+
+      <Modal show={show} onHide={handleClose} animation={false}>
+        <Modal.Header closeButton>
+          <Modal.Body>
+            Please <Link to="/auth">login</Link> to add a bookmark
+          </Modal.Body>
+        </Modal.Header>
+      </Modal>
     </>
   );
 }

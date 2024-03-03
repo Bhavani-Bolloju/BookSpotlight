@@ -11,6 +11,7 @@ import rightDouble from "../../assets/right-double-fill.svg";
 
 import BookItem from "./BookItem";
 import { BookDetailsProp } from "../../firebase/services";
+import { SecondaryHeader } from "../ui/Headings";
 
 import classes from "./GenreSection.module.scss";
 
@@ -68,12 +69,10 @@ const GenreSection: React.FC<GenreSectionProps> = function ({
     navigate(`/${name}/${encodeURL}`);
   };
 
-  // console.log(bookmarks, "genre section");
-
   return (
     <section className={classes.genre}>
       <div className={classes["genre__header"]}>
-        <h2 className={classes["genre__title"]}>{heading ? heading : title}</h2>
+        <SecondaryHeader>{heading ? heading : title}</SecondaryHeader>
         <CustomButton onClick={navigateHandler}>
           <span className={classes["btn-text"]}>View more</span>
           <img src={rightDouble} alt="right" />

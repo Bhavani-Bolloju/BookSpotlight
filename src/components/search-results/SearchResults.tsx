@@ -8,6 +8,7 @@ import BookItem from "../home/BookItem";
 import { Book } from "../home/GenreSection";
 import React, { useCallback, useEffect, useRef, useState } from "react";
 import { BookDetailsProp } from "../../firebase/services";
+import { TertiaryHeader } from "../ui/Headings";
 // import debounce from "lodash/debounce";
 
 interface SearchResultsProps {
@@ -104,9 +105,9 @@ const SearchResults: React.FC<SearchResultsProps> = function ({
   return (
     <section id="searchResults" className={classes.searchResults}>
       <div className={classes["searchResults__container"]}>
-        <h3 className={classes["searchResults__title"]}>
+        <TertiaryHeader>
           {title === "author" ? `more books by ${genre.split("+")}` : genre}
-        </h3>
+        </TertiaryHeader>
 
         {data && data?.length > 0 && (
           <ul className={classes["searchResults__list"]}>

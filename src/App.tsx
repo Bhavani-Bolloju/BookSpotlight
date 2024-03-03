@@ -1,13 +1,21 @@
 import { useContext } from "react";
 import { AuthContext } from "./context/AuthContext";
 import { Routes, Route, Navigate } from "react-router-dom";
-import AuthenticationPage from "./pages/AuthenticationPage";
+
 import HeaderNavigation from "./components/nav-header/HeaderNavigation";
-import HomePage from "./pages/Homepage";
-import DetailBookPage from "./pages/DetailBookPage";
-import GenreSearchResults from "./components/search-results/GenreSearchResults";
-import AuthorSearchResults from "./components/search-results/AuthorSearchResults";
-import BookmarksPage from "./pages/BookmarksPage";
+import { lazy, Suspense } from "react";
+import { Spinner } from "react-bootstrap";
+
+const LazyDetailsBookPage = lazy(() => import("./pages/DetailBookPage"));
+const LazyHomePage = lazy(() => import("./pages/Homepage"));
+const LazyAuthenticationPage = lazy(() => import("./pages/AuthenticationPage"));
+const LazyGenreSearchResults = lazy(
+  () => import("./components/search-results/GenreSearchResults")
+);
+const LazyAuthorSearchResults = lazy(
+  () => import("./components/search-results/AuthorSearchResults")
+);
+const LazyBookmarksPage = lazy(() => import("./pages/BookmarksPage"));
 
 function App() {
   const userAuth = useContext(AuthContext);
@@ -17,18 +25,95 @@ function App() {
       <HeaderNavigation />
       <Routes>
         <Route path="/">
-          <Route index element={<HomePage />} />
-          <Route path=":id" element={<DetailBookPage />} />
+          <Route
+            index
+            element={
+              <Suspense
+                fallback={
+                  <div className="center">
+                    <Spinner />
+                  </div>
+                }
+              >
+                <LazyHomePage />
+              </Suspense>
+            }
+          />
+          <Route
+            path=":id"
+            element={
+              <Suspense
+                fallback={
+                  <div className="center">
+                    <Spinner />
+                  </div>
+                }
+              >
+                <LazyDetailsBookPage />
+              </Suspense>
+            }
+          />
           <Route path="home" element={<Navigate to="/" replace />} />
           <Route
             path="auth"
             element={
-              !userAuth ? <AuthenticationPage /> : <Navigate to="/" replace />
+              !userAuth ? (
+                <Suspense
+                  fallback={
+                    <div className="center">
+                      <Spinner />
+                    </div>
+                  }
+                >
+                  <LazyAuthenticationPage />
+                </Suspense>
+              ) : (
+                <Navigate to="/" replace />
+              )
             }
           />
-          <Route path="genre/:genreId" element={<GenreSearchResults />} />
-          <Route path="author/:authorName" element={<AuthorSearchResults />} />
-          <Route path="/bookmarks" element={<BookmarksPage />} />
+          <Route
+            path="genre/:genreId"
+            element={
+              <Suspense
+                fallback={
+                  <div className="center">
+                    <Spinner />
+                  </div>
+                }
+              >
+                <LazyGenreSearchResults />
+              </Suspense>
+            }
+          />
+          <Route
+            path="author/:authorName"
+            element={
+              <Suspense
+                fallback={
+                  <div className="center">
+                    <Spinner />
+                  </div>
+                }
+              >
+                <LazyAuthorSearchResults />
+              </Suspense>
+            }
+          />
+          <Route
+            path="/bookmarks"
+            element={
+              <Suspense
+                fallback={
+                  <div className="center">
+                    <Spinner />
+                  </div>
+                }
+              >
+                <LazyBookmarksPage />
+              </Suspense>
+            }
+          />
         </Route>
       </Routes>
     </div>
@@ -36,12 +121,3 @@ function App() {
 }
 
 export default App;
-
-// const firebaseConfig = {
-//   apiKey: "AIzaSyCzGmj9H2vsJjUQMpp06Pzl_3PakQSXn2g",
-//   authDomain: "book-spotlight.firebaseapp.com",
-//   projectId: "book-spotlight",
-//   storageBucket: "book-spotlight.appspot.com",
-//   messagingSenderId: "925241360946",
-//   appId: "1:925241360946:web:d6d7125aad7128bb38722b"
-// };

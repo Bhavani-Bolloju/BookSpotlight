@@ -1,0 +1,19 @@
+.header {
+  font-family: var(--font-heading);
+  text-transform: capitalize;
+  letter-spacing: -0.5px;
+  color: var(--color-text-2);
+  font-display: swap;
+  font-weight: 600;
+
+  &__primary {
+    font-size: 44px;
+    margin-bottom: 50px;
+  }
+  &__secondary {
+    font-size: 30px;
+  }
+  &__tertiary {
+    font-size: 26px;
+  }
+}

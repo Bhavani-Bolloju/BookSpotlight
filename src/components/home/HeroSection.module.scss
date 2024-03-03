@@ -7,15 +7,6 @@
     var(--color-2)
   );
 
-  &__header {
-    font-size: 35px;
-    font-weight: 600;
-    text-transform: capitalize;
-    margin-bottom: 40px;
-    font-family: var(--font-heading);
-    letter-spacing: 0.5px;
-    color: var(--color-text-2);
-  }
   &__search {
     width: 60%;
     margin: auto;

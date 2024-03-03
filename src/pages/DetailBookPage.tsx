@@ -42,33 +42,6 @@ function DetailBookPage() {
     }
   }, [user]);
 
-  // const bookmarkHandler = async function () {
-  //   // setIsBookmarked((prev) => !prev);
-
-  //   if (!user || !id) return;
-  //   let bookDetails;
-
-  //   const fetchedBookmark = await getBookmarkedBook(user?.docId, id);
-
-  //   const newBookmark = {
-  //     id: book?.id,
-  //     thumbnail: book?.volumeInfo?.imageLinks?.thumbnail,
-  //     description: book?.volumeInfo?.description,
-  //     author: book?.volumeInfo?.authors[0],
-  //     title: book?.volumeInfo?.title
-  //   };
-
-  //   if (fetchedBookmark) {
-  //     bookDetails = fetchedBookmark;
-  //   } else {
-  //     bookDetails = newBookmark;
-  //   }
-  //   await modifyBookmarks(user?.docId as string, bookDetails, isBookmarked);
-
-  //   const req = await getBookmarks(user?.docId);
-  //   setBookmarks(req);
-  // };
-
   const toggleBookmarkHandler = async function (
     bookDetails: BookDetailsProp,
     isBookmarked: boolean

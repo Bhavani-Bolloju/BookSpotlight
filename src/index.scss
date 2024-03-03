@@ -19,7 +19,7 @@ FONT SIZE SYSTEM (px)
 
 
 cinzel weights all = 400,600,700
-source serif weights =300,400,500,600.700
+source serif weights =300,400,500,600,700
 
  */
 
@@ -39,8 +39,8 @@ body {
 }
 
 .splide__arrow--prev {
-  left: -50px;
-  top: 40%;
+  left: -50px !important;
+  top: 40% !important;
 
   background-color: var(--color-2);
 
@@ -50,8 +50,8 @@ body {
 }
 
 .splide__arrow--next {
-  right: -50px;
-  top: 40%;
+  right: -50px !important;
+  top: 50% !important;
   background-color: var(--color-2);
 
   svg {
@@ -108,4 +108,10 @@ body {
       color: var(--color-3);
     }
   }
+}
+
+.center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }

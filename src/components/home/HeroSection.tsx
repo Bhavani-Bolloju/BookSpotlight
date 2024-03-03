@@ -11,6 +11,7 @@ import { AuthContext } from "../../context/AuthContext";
 import useUser from "../custom-hook/useUser";
 import { BookDetailsProp } from "../../firebase/services";
 import { getBookmarks } from "../../firebase/services";
+import { PrimaryHeader } from "../ui/Headings";
 
 function HeroSection() {
   const [inputQuery, setInputQuery] = useState("");
@@ -44,13 +45,9 @@ function HeroSection() {
     setBookmarks(req);
   };
 
-  // console.log(inputQuery, "input");
-
   return (
     <header className={classes.heroSection}>
-      <h1 className={classes["heroSection__header"]}>
-        to know is to learn, to learn is to grow
-      </h1>
+      <PrimaryHeader> to know is to learn, to learn is to grow</PrimaryHeader>
       <div className={classes["heroSection__search"]}>
         <InputGroup>
           <Form.Control
