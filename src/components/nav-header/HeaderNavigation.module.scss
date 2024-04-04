@@ -12,6 +12,7 @@
 
   nav {
     height: 100%;
+    padding: 2.5rem 0;
     width: 100%;
     background-color: var(--color-background);
   }
@@ -19,7 +20,8 @@
   &__heading {
     display: flex;
     align-items: center;
-    gap: 10px;
+    flex-direction: row-reverse;
+    gap: 1rem;
     height: 100%;
 
     img {
@@ -29,12 +31,12 @@
     span {
       font-weight: 700;
       font-family: var(--font-heading);
-      font-size: 24px;
+      font-size: 26px;
 
       background: linear-gradient(
-        to bottom,
-        var(--color-2),
-        var(--color-text-1),
+        to right top,
+        var(--color-2) 10%,
+        var(--color-text-1) 40%,
         var(--color-3)
       );
       -webkit-background-clip: text;
