@@ -6,9 +6,12 @@
   --color-3: #f0abfc;
   --color-error: #f33c13;
 
+  // /* font-family */
+  // --font-heading: "Cinzel", serif; //400;600;700
+  // --font-body: "Source Serif 4", serif; //300;400;500;600;700
   /* font-family */
-  --font-heading: "Cinzel", serif;
-  --font-body: "Source Serif 4", serif;
+  --font-heading: "Raleway", sans-serif; //400;600;700
+  --font-body: "Poppins", serif; //300;400;500;600;700
 }
 
 /* SPACING SYSTEM (px)
@@ -97,7 +100,7 @@ body {
 }
 .modal {
   top: 20px;
-  z-index: 50000;
+  z-index: 3000;
 
   &-body {
     padding: 0;
@@ -114,4 +117,8 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.modal-backdrop {
+  z-index: 3000;
 }

@@ -3,15 +3,25 @@
   position: relative;
   height: 100px;
   backdrop-filter: blur(3px);
+  height: 10vh;
+  position: fixed;
+  width: 100%;
+  z-index: 2000;
+  top: 0;
+  left: 0;
 
   nav {
     height: 100%;
+    width: 100%;
+    background-color: var(--color-background);
   }
 
   &__heading {
     display: flex;
     align-items: center;
     gap: 10px;
+    height: 100%;
+
     img {
       width: 40px;
       object-fit: cover;

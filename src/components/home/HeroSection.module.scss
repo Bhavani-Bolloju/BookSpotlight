@@ -1,15 +1,21 @@
 .heroSection {
   text-align: center;
-  padding: 150px;
+  padding: 0 150px;
   background: linear-gradient(
     to bottom,
     var(--color-background),
     var(--color-2)
   );
+  height: 88vh;
+  min-height: 60%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 12%;
+  // justify-content: center;
 
   &__search {
     width: 60%;
-    margin: auto;
     input {
       border-color: var(--color-2);
       padding: 10px 10px;

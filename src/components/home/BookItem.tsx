@@ -1,7 +1,6 @@
 import React, { Ref, forwardRef, useContext, useEffect, useState } from "react";
 import { ReactNode } from "react";
 import { useNavigate, Link } from "react-router-dom";
-import classes from "./BookItem.module.scss";
 import Button from "react-bootstrap/Button";
 import OverlayTrigger from "react-bootstrap/OverlayTrigger";
 import Popover, { PopoverProps } from "react-bootstrap/Popover";
@@ -11,6 +10,7 @@ import useUser from "../custom-hook/useUser";
 
 import { getBookmarkedBook } from "../../firebase/services";
 import { BookDetailsProp } from "../../firebase/services";
+import classes from "./BookItem.module.scss";
 
 export interface BookItemProp {
   id: string;
