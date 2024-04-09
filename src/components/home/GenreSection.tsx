@@ -95,7 +95,22 @@ const GenreSection: React.FC<GenreSectionProps> = function ({
               arrows: true,
               pagination: false,
               drag: "free",
-              gap: "2rem"
+              gap: "2rem",
+              perMove: 1,
+              breakpoints: {
+                980: {
+                  perPage: 4
+                },
+                850: {
+                  perPage: 3
+                },
+                650: {
+                  perPage: 2
+                },
+                500: {
+                  perPage: 1
+                }
+              }
             }}
           >
             {data &&

@@ -22,7 +22,7 @@ const ScienceSection = function (props: ScienceSectionProp) {
       title={genre}
       bookmarks={props.bookmarks}
       toggleBookmark={props.toggleBookmark}
-    ></GenreSection>
+    />
   );
 };
 

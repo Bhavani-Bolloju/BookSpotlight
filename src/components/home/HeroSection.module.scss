@@ -6,16 +6,28 @@
     var(--color-background),
     var(--color-2)
   );
-  height: 88vh;
-  min-height: 60%;
+  height: 100vh;
+  min-height: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding-top: 12%;
+  justify-content: center;
+
+  @media screen and (max-width: 750px) {
+    padding: 0 50px;
+  }
+  // padding-top: 12%;
   // justify-content: center;
 
   &__search {
     width: 60%;
+
+    @media screen and (max-width: 950px) {
+      width: 80%;
+    }
+    @media screen and (max-width: 500px) {
+      width: 100%;
+    }
     input {
       border-color: var(--color-2);
       padding: 10px 10px;
@@ -39,6 +51,9 @@
 
     button {
       width: 150px;
+      @media screen and (max-width: 950px) {
+        width: 100px;
+      }
     }
   }
 }

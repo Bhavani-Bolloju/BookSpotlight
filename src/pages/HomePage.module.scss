@@ -1,6 +1,22 @@
 .homePage {
-  margin-top: 12vh;
+  // margin-top: 12vh;
   main {
     padding: 100px 0px;
+
+    @media screen and (max-width: 980px) {
+      padding: 50px 0px;
+    }
+
+    & > section {
+      @media screen and (max-width: 1200px) {
+        padding: 0px 100px;
+      }
+      @media screen and (max-width: 980px) {
+        padding: 0px 80px;
+      }
+      @media screen and (max-width: 500px) {
+        padding: 0px 30px;
+      }
+    }
   }
 }

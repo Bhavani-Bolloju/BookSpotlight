@@ -26,11 +26,23 @@ source serif weights =300,400,500,600,700
 
  */
 
+html {
+  font-size: 100%;
+
+  @media screen and (max-width: 950px) {
+    font-size: 80%;
+  }
+  @media screen and (max-width: 650px) {
+    font-size: 70%;
+  }
+}
+
 body {
   font-family: var(--font-body);
   background-color: var(--color-background);
   color: var(--color-text-1);
   letter-spacing: 0.8px;
+  font-size: 16px;
 }
 
 .carousel-control-prev-icon {
@@ -43,9 +55,13 @@ body {
 
 .splide__arrow--prev {
   left: -50px !important;
-  top: 40% !important;
+  top: 50% !important;
 
   background-color: var(--color-2);
+
+  @media screen and (max-width: 500px) {
+    left: 0 !important;
+  }
 
   svg {
     fill: var(--color-text-1);
@@ -57,13 +73,18 @@ body {
   top: 50% !important;
   background-color: var(--color-2);
 
+  @media screen and (max-width: 500px) {
+    right: 0 !important;
+  }
+
   svg {
     fill: var(--color-text-1);
   }
 }
 
 .splide__list {
-  align-items: center;
+  align-items: start !important;
+  gap: 10px !important;
   li {
     // background-color: red;
     display: flex;

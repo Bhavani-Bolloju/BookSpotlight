@@ -12,7 +12,7 @@
 
   nav {
     height: 100%;
-    padding: 2.5rem 0;
+    padding: 25px 0;
     width: 100%;
     background-color: var(--color-background);
   }
@@ -24,10 +24,18 @@
     gap: 1rem;
     height: 100%;
 
+    @media screen and (max-width: 500px) {
+      gap: 0.5rem;
+    }
+
     img {
       width: 40px;
       object-fit: cover;
+      @media screen and (max-width: 500px) {
+        width: 25px;
+      }
     }
+
     span {
       font-weight: 700;
       font-family: var(--font-heading);
@@ -42,6 +50,13 @@
       -webkit-background-clip: text;
       background-clip: text;
       color: transparent;
+
+      @media screen and (max-width: 750px) {
+        font-size: 22px;
+      }
+      @media screen and (max-width: 400px) {
+        font-size: 20px;
+      }
     }
   }
 
@@ -68,5 +83,14 @@
   button {
     width: 100px;
     margin-left: 30px;
+
+    @media screen and (max-width: 750px) {
+      margin-left: 10px;
+      width: 80px;
+    }
+    @media screen and (max-width: 500px) {
+      margin-left: 0px;
+      width: 70px;
+    }
   }
 }
