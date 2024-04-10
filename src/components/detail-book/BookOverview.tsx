@@ -168,14 +168,14 @@ function BookOverview({ id, bookmarks, toggleBookmark }: BookOverviewProps) {
           </div>
         )}
       </div>
-      {book && (
+      {/* {book && (
         <RecommendedBooks
           authors={book?.volumeInfo?.authors}
           categories={book?.volumeInfo?.categories}
           bookmarks={bookmarks}
           toggleBookmark={toggleBookmark}
         />
-      )}
+      )} */}
 
       <Modal show={show} onHide={handleClose} animation={false}>
         <Modal.Header closeButton>
