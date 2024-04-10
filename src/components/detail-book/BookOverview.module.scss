@@ -78,8 +78,8 @@
     }
   }
 
-  &__content {
-  }
+  // &__content {
+  // }
 
   &__authors {
     margin-top: -5px;
@@ -114,14 +114,19 @@
     margin: 0;
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 20px;
     margin-top: 30px;
 
     li {
       display: grid;
-      grid-auto-flow: column;
+      // grid-auto-flow: column;
       grid-template-columns: 30% 1fr;
       align-items: start;
+
+      @media screen and (max-width: 500px) {
+        grid-template-columns: 1fr;
+        gap: 0px;
+      }
     }
     .title {
       font-size: 18px;
@@ -130,6 +135,8 @@
     }
     .text {
       justify-self: start;
+      overflow-wrap: anywhere;
+      opacity: 0.8;
     }
 
     a {
