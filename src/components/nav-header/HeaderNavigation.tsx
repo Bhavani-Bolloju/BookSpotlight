@@ -1,19 +1,20 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import icon from "../../assets/Reading.svg";
 import { Link, NavLink } from "react-router-dom";
 import CustomButton from "../ui/Button";
-import { useNavigate } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../../context/AuthContext";
 import { signOut } from "firebase/auth";
 import { auth } from "../../firebase/firebaseSetup";
 
 import classes from "./HeaderNavigation.module.scss";
 function HeaderNavigation() {
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
   const userAuth = useContext(AuthContext);
+  const [isnavActive, setIsnavActive] = useState(false);
 
   const logoutHandler = function () {
     signOut(auth);
@@ -28,11 +29,55 @@ function HeaderNavigation() {
             <img src={icon} alt="logo" />
             <span>BookSpotlight</span>
           </NavLink>
-          <Nav className={` ${classes["navbar__links"]}`}>
-            <Link to="/home">Home</Link>
-            {userAuth !== null && <Link to="/bookmarks">Bookmarks</Link>}
-            {/* {userAuth !== null && <Link to="/goals">Goals</Link>} */}
-            {userAuth == null && (
+          <div className={classes["navbar__box"]}>
+            <Nav
+              className={
+                !isnavActive
+                  ? `${classes["navbar__links"]}`
+                  : `${classes["navbar__links--active"]}`
+              }
+            >
+              <Link to="/home">Home</Link>
+              {userAuth == null && <Link to="/auth">Login</Link>}
+              {userAuth !== null && <Link to="/bookmarks">Bookmarks</Link>}
+            </Nav>
+            {userAuth !== null && (
+              <div className={classes["navbar__button"]}>
+                <CustomButton
+                  type="button"
+                  value="button"
+                  onClick={logoutHandler}
+                >
+                  Logout
+                </CustomButton>
+              </div>
+            )}
+            <button
+              onClick={() => setIsnavActive((prev) => !prev)}
+              className={
+                !isnavActive
+                  ? `${classes.hamburger}`
+                  : `${classes.hamburger} ${classes["hamburger__active"]}`
+              }
+            >
+              <span></span>
+              <span></span>
+              <span></span>
+            </button>
+          </div>
+        </Container>
+      </Navbar>
+    </div>
+  );
+}
+
+export default HeaderNavigation;
+
+{
+  /* {userAuth !== null && <Link to="/goals">Goals</Link>} */
+}
+{
+  /* {userAuth == null && (
               <CustomButton
                 type="button"
                 value="button"
@@ -50,12 +95,5 @@ function HeaderNavigation() {
               >
                 Logout
               </CustomButton>
-            )}
-          </Nav>
-        </Container>
-      </Navbar>
-    </div>
-  );
+            )} */
 }
-
-export default HeaderNavigation;

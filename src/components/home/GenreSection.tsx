@@ -74,7 +74,7 @@ const GenreSection: React.FC<GenreSectionProps> = function ({
       <div className={classes["genre__header"]}>
         <SecondaryHeader>{heading ? heading : title}</SecondaryHeader>
         <CustomButton onClick={navigateHandler}>
-          <span className={classes["btn-text"]}>View more</span>
+          <span className={classes["btn-text"]}>more</span>
           <img src={rightDouble} alt="right" />
         </CustomButton>
       </div>
@@ -91,16 +91,12 @@ const GenreSection: React.FC<GenreSectionProps> = function ({
         {data && data?.totalItems > 0 && !isLoading && (
           <Splide
             options={{
-              perPage: 5,
+              perPage: 4,
               arrows: true,
               pagination: false,
               drag: "free",
-              gap: "2rem",
               perMove: 1,
               breakpoints: {
-                980: {
-                  perPage: 4
-                },
                 850: {
                   perPage: 3
                 },
@@ -131,6 +127,7 @@ const GenreSection: React.FC<GenreSectionProps> = function ({
                   </SplideSlide>
                 );
               })}
+            {/* <div>view more</div> */}
           </Splide>
         )}
       </div>

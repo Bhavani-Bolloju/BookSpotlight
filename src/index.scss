@@ -53,38 +53,36 @@ body {
   background-image: url("./assets//mingcute_right-line.svg");
 }
 
+.splide__arrow {
+  background: white !important;
+  border-radius: 0 !important;
+  border: 2px solid var(--color-3) !important;
+}
+
 .splide__arrow--prev {
-  left: -50px !important;
+  left: -2% !important;
   top: 50% !important;
 
   background-color: var(--color-2);
 
-  @media screen and (max-width: 500px) {
-    left: 0 !important;
-  }
-
   svg {
-    fill: var(--color-text-1);
+    fill: var(--color-3) !important;
   }
 }
 
 .splide__arrow--next {
-  right: -50px !important;
+  right: -2% !important;
   top: 50% !important;
   background-color: var(--color-2);
 
-  @media screen and (max-width: 500px) {
-    right: 0 !important;
-  }
-
   svg {
-    fill: var(--color-text-1);
+    fill: var(--color-3) !important;
   }
 }
 
 .splide__list {
   align-items: start !important;
-  gap: 10px !important;
+
   li {
     // background-color: red;
     display: flex;

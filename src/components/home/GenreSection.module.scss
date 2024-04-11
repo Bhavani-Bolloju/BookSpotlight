@@ -1,6 +1,10 @@
 .genre {
-  padding: 0px 150px 0px;
+  padding: 0px 100px 0px;
   width: 100%;
+
+  @media screen and (max-width: 650px) {
+    padding: 0px 50px 0px;
+  }
 
   &__header {
     display: flex;
@@ -8,21 +12,24 @@
     justify-content: space-between;
     margin-top: 50px;
     margin-bottom: 30px;
+    overflow-wrap: normal;
+
+    @media screen and (max-width: 550px) {
+      // flex-direction: column;
+    }
 
     button {
       width: fit-content;
       font-size: 12px;
       display: flex;
       align-items: center;
+      text-wrap: nowrap;
+      // align-self: flex-end;
     }
 
     img {
       height: 20px;
     }
-  }
-
-  &__list {
-    text-align: center;
   }
 
   .error {

@@ -60,6 +60,17 @@
     }
   }
 
+  &__box {
+    display: flex;
+    align-items: center;
+    margin-left: auto;
+    gap: 20px;
+
+    @media screen and (max-width: 450px) {
+      gap: 5px;
+    }
+  }
+
   &__container {
     a {
       color: var(--color-text-1) !important;
@@ -78,19 +89,104 @@
     display: flex;
     align-items: center;
     gap: 20px;
+    margin-left: auto;
+    transition: all 0.2s;
+
+    @media screen and (max-width: 500px) {
+      visibility: hidden;
+      opacity: 0;
+      position: absolute;
+      width: 100%;
+      top: 0;
+      right: 0;
+      transition: all 0.05s ease-in;
+      &--active {
+        position: absolute;
+        display: flex;
+        flex-direction: column !important;
+        top: 90%;
+        background-color: var(--color-2);
+        right: 0;
+        width: 100%;
+        padding: 20px;
+        text-align: center;
+        gap: 5px;
+        transition: all 0.1s ease-in;
+
+        a {
+          padding: 5px 0;
+          width: 95%;
+          background-color: var(--color-background);
+          margin: auto;
+          transition: all 0.5s;
+        }
+      }
+    }
   }
 
-  button {
-    width: 100px;
-    margin-left: 30px;
+  &__button {
+    margin-left: auto;
+    button {
+      width: 100px;
 
-    @media screen and (max-width: 750px) {
-      margin-left: 10px;
-      width: 80px;
+      @media screen and (max-width: 750px) {
+        margin-left: 10px;
+        width: 80px;
+      }
+      @media screen and (max-width: 500px) {
+        margin-left: 0px;
+        width: 70px;
+      }
     }
-    @media screen and (max-width: 500px) {
-      margin-left: 0px;
-      width: 70px;
+  }
+}
+
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 8px;
+  border: none;
+  outline: none;
+  background: transparent;
+  transition: all 0.2s;
+
+  @media screen and (max-width: 500px) {
+    display: flex;
+  }
+  span {
+    width: 35px;
+    height: 2px;
+    transition: all 0.1s ease-in;
+    backface-visibility: hidden;
+    &:nth-child(2) {
+      display: none;
+    }
+
+    &:first-child {
+      background-color: var(--color-3);
+    }
+
+    &:last-child {
+      background-color: var(--color-3);
+      width: 80%;
+    }
+  }
+
+  &__active {
+    span {
+      position: relative;
+      &:first-child {
+        transform: translateY(5px) rotate(45deg);
+      }
+      &:nth-child(2) {
+        opacity: none;
+        visibility: hidden;
+        display: none;
+      }
+      &:last-child {
+        width: 100%;
+        transform: translateY(-5px) rotate(-45deg);
+      }
     }
   }
 }
