@@ -1,6 +1,6 @@
 .heroSection {
   text-align: center;
-  padding: 0 150px;
+  padding: 0 15rem;
   background: linear-gradient(
     to bottom,
     var(--color-background),
@@ -13,8 +13,8 @@
   align-items: center;
   justify-content: center;
 
-  @media screen and (max-width: 750px) {
-    padding: 0 50px;
+  @media screen and (max-width: 75rem) {
+    padding: 0 5rem;
   }
   // padding-top: 12%;
   // justify-content: center;
@@ -22,26 +22,26 @@
   &__search {
     width: 60%;
 
-    @media screen and (max-width: 950px) {
+    @media screen and (max-width: 95rem) {
       width: 80%;
     }
-    @media screen and (max-width: 500px) {
+    @media screen and (max-width: 50rem) {
       width: 100%;
     }
     input {
       border-color: var(--color-2);
-      padding: 10px 10px;
-      font-size: 16px;
+      padding: 1rem;
+      font-size: 1.6rem;
       font-family: var(--font-body);
       color: var(--color-text-2);
       &:focus {
-        box-shadow: 0 5px 20px rgba(240, 171, 252, 0.6);
+        box-shadow: 0 5px 2rem rgba(240, 171, 252, 0.6);
         border-color: var(--color-2);
         color: inherit;
       }
 
       &::placeholder {
-        font-size: 16px;
+        font-size: 1.6rem;
         text-transform: capitalize;
         font-weight: 500;
         color: var(--color-3);
@@ -50,9 +50,9 @@
     }
 
     button {
-      width: 150px;
-      @media screen and (max-width: 950px) {
-        width: 100px;
+      width: 15rem;
+      @media screen and (max-width: 95rem) {
+        width: 10rem;
       }
     }
   }

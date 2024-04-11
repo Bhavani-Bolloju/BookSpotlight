@@ -1,5 +1,5 @@
 .button {
-  width: 200px;
+  width: 20rem;
 
   border-color: var(--color-3) !important;
   color: var(--color-text) !important;
@@ -11,9 +11,10 @@
   );
   display: flex;
   flex-direction: row !important;
+  font-size: 1.6rem;
 
   &:hover {
-    box-shadow: 0 1px 10px rgba(240, 171, 252, 0.5);
+    box-shadow: 0 1px 1rem rgba(240, 171, 252, 0.5);
   }
 
   &:focus {

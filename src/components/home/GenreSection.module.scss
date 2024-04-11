@@ -1,26 +1,26 @@
 .genre {
-  padding: 0px 100px 0px;
+  padding: 0rem 10rem 0rem;
   width: 100%;
 
-  @media screen and (max-width: 650px) {
-    padding: 0px 50px 0px;
+  @media screen and (max-width: 65rem) {
+    padding: 0rem 5rem 0rem;
   }
 
   &__header {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    margin-top: 50px;
-    margin-bottom: 30px;
+    margin-top: 5rem;
+    margin-bottom: 3rem;
     overflow-wrap: normal;
 
-    @media screen and (max-width: 550px) {
+    @media screen and (max-width: 55rem) {
       // flex-direction: column;
     }
 
     button {
       width: fit-content;
-      font-size: 12px;
+      font-size: 1.2rem;
       display: flex;
       align-items: center;
       text-wrap: nowrap;
@@ -28,7 +28,7 @@
     }
 
     img {
-      height: 20px;
+      height: 2rem;
     }
   }
 

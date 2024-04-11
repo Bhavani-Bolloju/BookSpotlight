@@ -1,27 +1,27 @@
 .form {
-  width: 600px;
+  width: 60rem;
   margin: auto;
   margin-top: 15vh;
   background-color: #fff;
-  padding: 100px;
-  padding-top: 50px;
-  box-shadow: 0 1px 20px rgba(#f5d0fe, 0.5);
-  border-radius: 10px;
+  padding: 10rem;
+  padding-top: 5rem;
+  box-shadow: 0 1px 2rem rgba(#f5d0fe, 0.5);
+  border-radius: 1rem;
 
   @media screen and (max-width: 650px) {
     width: 90%;
-    padding: 50px;
+    padding: 5rem;
   }
   @media screen and (max-width: 450px) {
     width: 90%;
-    padding: 50px 10px;
+    padding: 5rem 1rem;
   }
 
   &__heading {
-    font-size: 38px;
+    font-size: 3.8rem;
     font-family: var(--font-heading);
     font-weight: 700;
-    margin-bottom: 30px;
+    margin-bottom: 3rem;
     text-align: center;
     text-transform: capitalize;
     background: linear-gradient(
@@ -35,14 +35,19 @@
     color: transparent;
   }
   form {
-    padding: 20px;
+    padding: 2rem;
   }
   input {
-    margin-bottom: 20px;
+    margin-bottom: 2rem;
     border-color: var(--color-3);
-    border-width: 2px;
+    border-width: 0.2rem;
     font-family: var(--font-body);
     color: var(--color-text-1);
+    min-height: 5.5rem !important;
+    height: 5.5rem !important;
+    font-size: 1.5rem;
+    color: var(--color-text-1);
+    font-family: var(--font-body);
 
     &:focus {
       border-color: var(--color-2);
@@ -59,20 +64,21 @@
     font-family: var(--font-body);
   }
   button {
-    margin-top: 50px;
+    margin-top: 5rem;
     position: relative;
     left: 50%;
     transform: translateX(-50%);
+    font-size: 1.6rem;
   }
 
   &__switch {
     color: var(--color-text-1);
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 1rem;
     justify-content: center;
-    margin-top: 20px;
-    font-size: 14px;
+    margin-top: 2rem;
+    font-size: 1.4rem;
     @media screen and (max-width: 450px) {
       flex-direction: column;
       gap: 0px;
@@ -88,12 +94,6 @@
       border-bottom: 2px solid var(--color-3);
       color: inherit;
     }
-
-    // a {
-    //   text-decoration: none;
-    //   color: var(--color-text-1);
-    //   border-bottom: 2px solid var(--color-3);
-    // }
   }
 
   &__error {

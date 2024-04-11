@@ -2,16 +2,16 @@
   width: 80%;
   margin: auto;
   // height: 100vh;
-  margin-top: 50px;
 
   &__container {
     text-align: center;
+    margin-top: 10rem;
   }
 
   &__title {
-    font-size: 32px;
+    font-size: 3.2rem;
     font-weight: 500;
-    margin: 20px 0;
+    margin: 2rem 0;
     text-transform: uppercase;
     color: var(--color-text-2);
   }
@@ -19,11 +19,11 @@
   &__list {
     list-style: none;
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr));
     align-items: baseline;
-    gap: 20px;
-    row-gap: 40px;
-    margin-top: 50px;
+    gap: 2rem;
+    row-gap: 4rem;
+    margin-top: 5rem;
 
     li {
       display: flex;
@@ -40,6 +40,6 @@
   .end {
     height: 2px;
     width: 100%;
-    padding: 20px;
+    padding: 2rem;
   }
 }
