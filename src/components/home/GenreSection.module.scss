@@ -3,7 +3,7 @@
   width: 100%;
 
   @media screen and (max-width: 65rem) {
-    padding: 0rem 5rem 0rem;
+    padding: 0rem 2rem 0rem;
   }
 
   &__header {
@@ -15,7 +15,8 @@
     overflow-wrap: normal;
 
     @media screen and (max-width: 55rem) {
-      // flex-direction: column;
+      margin-top: 2rem;
+      margin-bottom: 1rem;
     }
 
     button {

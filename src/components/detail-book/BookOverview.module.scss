@@ -16,14 +16,14 @@
   &__cover {
     // max-width: 38%;
     min-width: 12rem;
-
     height: 100%;
     flex-basis: 20%;
-    margin-right: 10rem;
+    width: 100%;
+    margin-right: 5rem;
     position: relative;
 
     @media screen and (max-width: 95rem) {
-      margin-right: 5rem;
+      margin-right: 3rem;
     }
     @media screen and (max-width: 80rem) {
       margin-right: 0px;
@@ -46,6 +46,10 @@
         transform: scale(1.01);
       }
     }
+  }
+
+  &__content {
+    flex-basis: 80%;
   }
 
   &__bookmark {
@@ -78,9 +82,6 @@
     }
   }
 
-  // &__content {
-  // }
-
   &__authors {
     margin-top: -5px;
     font-weight: 500;
@@ -96,6 +97,7 @@
     font-weight: 500;
     text-transform: capitalize;
     margin-top: 3rem;
+    margin-bottom: 1rem;
   }
   &__summary--text {
     color: var(--colot-text-2);
@@ -106,6 +108,58 @@
     text-wrap: wrap;
     margin: 0;
     padding: 0;
+    line-height: 1.8;
+
+    p {
+      display: -webkit-box;
+      text-overflow: ellipsis;
+      -webkit-line-clamp: 5;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+
+      b {
+        font-weight: 500;
+      }
+    }
+
+    button {
+      border: none;
+      outline: none;
+      background-color: transparent;
+      width: 100%;
+      text-align: left;
+      height: 4rem;
+      background-color: #fdf4fff0;
+      position: relative;
+      top: -2.8rem;
+      z-index: 1;
+      padding: 0.5rem 0;
+      color: inherit;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 1.4rem;
+      backdrop-filter: blur(2px);
+      box-shadow: 0px 0px -2px 10px rgba(255, 255, 255, 0.2);
+      svg {
+        width: 1.5rem;
+      }
+
+      &:hover {
+        span {
+          border-bottom: 1px solid;
+        }
+      }
+    }
+
+    &.active {
+      p {
+        display: block;
+      }
+      button {
+        display: none;
+      }
+    }
   }
 
   &__additional-info {
@@ -115,7 +169,7 @@
     display: flex;
     flex-direction: column;
     gap: 2rem;
-    margin-top: 3rem;
+    margin-top: 2rem;
 
     li {
       display: grid;

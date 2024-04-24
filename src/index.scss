@@ -28,6 +28,13 @@ source serif weights =300,400,500,600,700
 
 html {
   font-size: 62.5%;
+
+  @media screen and (max-width: 95rem) {
+    font-size: 60%;
+  }
+  @media screen and (max-width: 65rem) {
+    font-size: 58%;
+  }
 }
 
 body {

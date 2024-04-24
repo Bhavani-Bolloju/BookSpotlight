@@ -91,14 +91,14 @@ const GenreSection: React.FC<GenreSectionProps> = function ({
         {data && data?.totalItems > 0 && !isLoading && (
           <Splide
             options={{
-              perPage: 4,
+              perPage: 5,
               arrows: true,
               pagination: false,
               drag: "free",
               perMove: 1,
               breakpoints: {
-                100: {
-                  perPage: 5
+                1200: {
+                  perPage: 4
                 },
                 850: {
                   perPage: 3
