@@ -97,13 +97,16 @@ const GenreSection: React.FC<GenreSectionProps> = function ({
               drag: "free",
               perMove: 1,
               breakpoints: {
+                100: {
+                  perPage: 5
+                },
                 850: {
                   perPage: 3
                 },
-                650: {
+                700: {
                   perPage: 2
                 },
-                500: {
+                550: {
                   perPage: 1
                 }
               }
