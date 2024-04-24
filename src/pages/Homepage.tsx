@@ -50,7 +50,7 @@ function HomePage() {
           bookmarks={bookmarks}
           toggleBookmark={toggleBookmarkHandler}
         />
-        <BiographySection
+        {/* <BiographySection
           bookmarks={bookmarks}
           toggleBookmark={toggleBookmarkHandler}
         />
@@ -61,7 +61,7 @@ function HomePage() {
         <MysterySection
           bookmarks={bookmarks}
           toggleBookmark={toggleBookmarkHandler}
-        />
+        /> */}
       </main>
     </section>
   );

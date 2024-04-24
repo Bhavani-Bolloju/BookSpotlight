@@ -16,8 +16,9 @@
   @media screen and (max-width: 75rem) {
     padding: 0 5rem;
   }
-  // padding-top: 12%;
-  // justify-content: center;
+  @media screen and (max-width: 40rem) {
+    padding: 0 2rem;
+  }
 
   &__search {
     width: 60%;

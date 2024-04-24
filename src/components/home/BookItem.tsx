@@ -115,7 +115,13 @@ const BookItem: React.FC<BookItemProp> = function ({
         >
           <Button type="button" onClick={navigateHandler}>
             <div className={classes["book__image"]}>
-              <img src={thumbnail} alt="" />
+              <img
+                onLoad={() => {
+                  console.log("image loaded");
+                }}
+                src={thumbnail}
+                alt=""
+              />
             </div>
             <p className={classes["book__title"]}>{title}</p>
             <p className={classes["book__author"]}>
