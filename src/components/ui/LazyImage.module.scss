@@ -1,0 +1,19 @@
+.book__image {
+  max-width: 18rem;
+  width: 100%;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  background-color: var(--color-2);
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.05);
+
+  img {
+    width: 100%;
+    object-fit: cover;
+    border-radius: 0.5rem;
+  }
+
+  img {
+    width: 100%;
+    object-fit: cover;
+  }
+}

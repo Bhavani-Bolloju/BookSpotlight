@@ -11,10 +11,6 @@ interface ScienceSectionProp {
 
 const ScienceSection = function (props: ScienceSectionProp) {
   const genre = "science";
-  // const maxResults = 8;
-  // const url = `volumes?q=subject:${genre}&maxResults=${maxResults}&`;
-
-  // console.log(props, "science section");
 
   return (
     <GenreSection

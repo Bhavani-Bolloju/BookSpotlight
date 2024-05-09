@@ -26,7 +26,7 @@ function HeaderNavigation() {
       <Navbar>
         <Container className={classes["navbar__container"]}>
           <NavLink to="/" className={classes["navbar__heading"]}>
-            <img src={icon} alt="logo" />
+            <img src={icon} alt="logo" height={100} width={100} />
             <span>BookSpotlight</span>
           </NavLink>
           <div className={classes["navbar__box"]}>

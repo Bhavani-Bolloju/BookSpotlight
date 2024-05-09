@@ -1,4 +1,4 @@
-import React, { Ref, forwardRef, useContext, useEffect, useState } from "react";
+import React, { forwardRef, useContext, useEffect, useState } from "react";
 import { ReactNode } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import Button from "react-bootstrap/Button";
@@ -11,6 +11,8 @@ import useUser from "../custom-hook/useUser";
 import { getBookmarkedBook } from "../../firebase/services";
 import { BookDetailsProp } from "../../firebase/services";
 import classes from "./BookItem.module.scss";
+// import { Spinner } from "react-bootstrap";
+import LazyImage from "../ui/LazyImage";
 
 export interface BookItemProp {
   id: string;
@@ -114,15 +116,9 @@ const BookItem: React.FC<BookItemProp> = function ({
           }
         >
           <Button type="button" onClick={navigateHandler}>
-            <div className={classes["book__image"]}>
-              <img
-                onLoad={() => {
-                  console.log("image loaded");
-                }}
-                src={thumbnail}
-                alt=""
-              />
-            </div>
+            {/* <div className={classes["book__image"]}> */}
+            <LazyImage src={thumbnail} alt={title} />
+            {/* </div> */}
             <p className={classes["book__title"]}>{title}</p>
             <p className={classes["book__author"]}>
               By {author ? author : "unknown"}
