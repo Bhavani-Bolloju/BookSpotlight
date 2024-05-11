@@ -13,6 +13,7 @@ import { TertiaryHeader } from "../ui/Headings";
 import { Link } from "react-router-dom";
 
 import classes from "./BookOverview.module.scss";
+import LazyImage from "../ui/LazyImage";
 
 interface BookOverviewProps {
   id: string;
@@ -113,6 +114,8 @@ function BookOverview({ id, bookmarks, toggleBookmark }: BookOverviewProps) {
     toggleBookmark(bookDetails, isBookmarked);
   };
 
+  const ctg = book?.volumeInfo?.categories;
+
   return (
     <>
       <div className={classes["book__container"]}>
@@ -125,7 +128,7 @@ function BookOverview({ id, bookmarks, toggleBookmark }: BookOverviewProps) {
 
         {book && (
           <div className={classes["book__cover"]}>
-            <img
+            <LazyImage
               src={book?.volumeInfo?.imageLinks?.thumbnail}
               alt={book?.volumeInfo?.title}
             />
@@ -168,7 +171,7 @@ function BookOverview({ id, bookmarks, toggleBookmark }: BookOverviewProps) {
               <li>
                 <span className={classes.title}>Catergory : </span>
                 <span className={classes.text}>
-                  {book?.volumeInfo?.categories}
+                  {ctg.join("").split(" / ").join(", ")}
                 </span>
               </li>
               <li>

@@ -16,10 +16,6 @@ function LazyImage({ src, alt }: LazyImageProps) {
   });
   const [isLoading, setIsLoading] = useState(false);
 
-  // console.log(ref, inView);
-
-  console.log(inView);
-
   useEffect(() => {
     if (inView) {
       setIsLoading(true);

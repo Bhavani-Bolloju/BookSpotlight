@@ -1,4 +1,4 @@
-import React, { forwardRef, useContext, useEffect, useState } from "react";
+import React, { Ref, forwardRef, useContext, useEffect, useState } from "react";
 import { ReactNode } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import Button from "react-bootstrap/Button";
@@ -116,9 +116,8 @@ const BookItem: React.FC<BookItemProp> = function ({
           }
         >
           <Button type="button" onClick={navigateHandler}>
-            {/* <div className={classes["book__image"]}> */}
             <LazyImage src={thumbnail} alt={title} />
-            {/* </div> */}
+
             <p className={classes["book__title"]}>{title}</p>
             <p className={classes["book__author"]}>
               By {author ? author : "unknown"}

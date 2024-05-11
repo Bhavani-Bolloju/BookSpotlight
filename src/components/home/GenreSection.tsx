@@ -61,11 +61,8 @@ const GenreSection: React.FC<GenreSectionProps> = function ({
   }
 
   const { data, isLoading, error } = useFetch(URL);
-  // console.log(data);
-
-  console.log(data);
-
   const navigate = useNavigate();
+
   const navigateHandler = function () {
     const encodeURL = encodeURIComponent(title);
     navigate(`/${name}/${encodeURL}`);
@@ -77,7 +74,7 @@ const GenreSection: React.FC<GenreSectionProps> = function ({
         <SecondaryHeader>{heading ? heading : title}</SecondaryHeader>
         <CustomButton onClick={navigateHandler}>
           <span className={classes["btn-text"]}>more</span>
-          <img src={rightDouble} alt="right" />
+          <img width={20} height={20} src={rightDouble} alt="right" />
         </CustomButton>
       </div>
       <div className={classes["genre__list"]}>
@@ -119,20 +116,25 @@ const GenreSection: React.FC<GenreSectionProps> = function ({
                 const bookId: string = book?.id;
 
                 return (
-                  <SplideSlide key={book.id + "" + i}>
-                    <BookItem
-                      id={bookId}
-                      thumbnail={book?.volumeInfo?.imageLinks?.thumbnail}
-                      title={book?.volumeInfo?.title}
-                      author={book?.volumeInfo?.authors}
-                      description={book?.volumeInfo?.description}
-                      bookmarked={bookmarks?.some((item) => item === bookId)}
-                      toggleBookmark={toggleBookmark}
-                    />
-                  </SplideSlide>
+                  <React.Fragment key={book.id + "" + i}>
+                    {book?.volumeInfo?.imageLinks?.thumbnail && (
+                      <SplideSlide>
+                        <BookItem
+                          id={bookId}
+                          thumbnail={book?.volumeInfo?.imageLinks?.thumbnail}
+                          title={book?.volumeInfo?.title}
+                          author={book?.volumeInfo?.authors}
+                          description={book?.volumeInfo?.description}
+                          bookmarked={bookmarks?.some(
+                            (item) => item === bookId
+                          )}
+                          toggleBookmark={toggleBookmark}
+                        />
+                      </SplideSlide>
+                    )}
+                  </React.Fragment>
                 );
               })}
-            {/* <div>view more</div> */}
           </Splide>
         )}
       </div>

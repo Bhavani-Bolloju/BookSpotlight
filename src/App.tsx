@@ -5,7 +5,7 @@ import { Routes, Route, Navigate } from "react-router-dom";
 import HeaderNavigation from "./components/nav-header/HeaderNavigation";
 import { lazy, Suspense } from "react";
 import { Spinner } from "react-bootstrap";
-import HomePage from "./pages/Homepage";
+// import HomePage from "./pages/Homepage";
 
 const LazyDetailsBookPage = lazy(() => import("./pages/DetailBookPage"));
 const LazyHomePage = lazy(() => import("./pages/Homepage"));

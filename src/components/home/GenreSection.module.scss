@@ -1,6 +1,8 @@
 .genre {
   padding: 0rem 10rem 0rem;
   width: 100%;
+  min-height: 20rem;
+  // animation: fadeIn 1s ease-in 1.5;
 
   @media screen and (max-width: 65rem) {
     padding: 0rem 2rem 0rem;
@@ -35,5 +37,20 @@
 
   .error {
     color: var(--color-error);
+  }
+}
+
+@keyframes fadeIn {
+  0% {
+    transform: translateY(50%);
+    // opacity: 0;
+  }
+  30% {
+    transform: translateY(50%);
+    // opacity: 0;
+  }
+  100% {
+    transform: translateY(0%);
+    // opacity: 1;
   }
 }

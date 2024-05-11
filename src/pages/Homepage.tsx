@@ -13,8 +13,14 @@ import { getBookmarks } from "../firebase/services";
 import { BookDetailsProp } from "../firebase/services";
 import { modifyBookmarks } from "../firebase/services";
 
+import { useInView, InView } from "react-intersection-observer";
+
 function HomePage() {
   const [bookmarks, setBookmarks] = useState<string[] | []>([]);
+
+  const [bioInView, setBioInView] = useState(false);
+  const [fictionInView, setFictionInView] = useState(false);
+  const [mysteryInView, setMysteryInView] = useState(false);
 
   const ctx = useContext(AuthContext);
   const user = useUser(ctx?.uid);
@@ -35,33 +41,85 @@ function HomePage() {
     isBookmarked: boolean
   ) {
     if (!user) return;
-
     await modifyBookmarks(user?.docId, bookDetails, isBookmarked);
 
     const req = await getBookmarks(user?.docId);
     setBookmarks(req);
   };
 
+  const { inView, ref } = useInView({
+    threshold: 0.1,
+    triggerOnce: true,
+    delay: 100
+  });
+
+  // console.log(inView);
   return (
     <section className={classes.homePage}>
       <HeroSection />
-      <main>
-        <ScienceSection
-          bookmarks={bookmarks}
-          toggleBookmark={toggleBookmarkHandler}
-        />
-        <BiographySection
-          bookmarks={bookmarks}
-          toggleBookmark={toggleBookmarkHandler}
-        />
-        <FictionSection
-          bookmarks={bookmarks}
-          toggleBookmark={toggleBookmarkHandler}
-        />
-        <MysterySection
-          bookmarks={bookmarks}
-          toggleBookmark={toggleBookmarkHandler}
-        />
+      <main ref={ref}>
+        <div className={classes.section}>
+          {inView && (
+            <ScienceSection
+              bookmarks={bookmarks}
+              toggleBookmark={toggleBookmarkHandler}
+            />
+          )}
+        </div>
+        <InView
+          as="div"
+          onChange={(inView) => {
+            setBioInView(inView);
+          }}
+          threshold={0.1}
+          delay={100}
+          triggerOnce={true}
+          className={classes.section}
+        >
+          {bioInView && (
+            <BiographySection
+              bookmarks={bookmarks}
+              toggleBookmark={toggleBookmarkHandler}
+            />
+          )}
+        </InView>
+
+        <InView
+          as="div"
+          onChange={(inView) => {
+            // console.log("fiction in view", inView);
+            setFictionInView(inView);
+          }}
+          threshold={0.1}
+          delay={100}
+          triggerOnce={true}
+          className={classes.section}
+        >
+          {fictionInView && (
+            <FictionSection
+              bookmarks={bookmarks}
+              toggleBookmark={toggleBookmarkHandler}
+            />
+          )}
+        </InView>
+
+        <InView
+          as="div"
+          onChange={(inView) => {
+            setMysteryInView(inView);
+          }}
+          threshold={0.1}
+          delay={100}
+          triggerOnce={true}
+          className={classes.section}
+        >
+          {mysteryInView && (
+            <MysterySection
+              bookmarks={bookmarks}
+              toggleBookmark={toggleBookmarkHandler}
+            />
+          )}
+        </InView>
       </main>
     </section>
   );

@@ -11,8 +11,7 @@ interface BookmarksProp {
 
 const FictionSection = function (props: BookmarksProp) {
   const genre = "fiction";
-  // const maxResults = 8;
-  // const url = `volumes?q=subject:${genre}&maxResults=${maxResults}&`;
+  // console.log(genre, "current section");
 
   return (
     <GenreSection
@@ -20,7 +19,7 @@ const FictionSection = function (props: BookmarksProp) {
       name="genre"
       bookmarks={props.bookmarks}
       toggleBookmark={props.toggleBookmark}
-    ></GenreSection>
+    />
   );
 };
 

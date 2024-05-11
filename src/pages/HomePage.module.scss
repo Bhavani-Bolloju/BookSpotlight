@@ -1,22 +1,12 @@
 .homePage {
-  // margin-top: 12vh;
   main {
-    padding: 10rem 0px;
-
-    @media screen and (max-width: 980px) {
-      padding: 5rem 0px;
-    }
-
-    & > section {
-      @media screen and (max-width: 1200px) {
-        padding: 0px 10rem;
-      }
-      @media screen and (max-width: 980px) {
-        padding: 0px 8rem;
-      }
-      @media screen and (max-width: 500px) {
-        padding: 0px 3rem;
-      }
-    }
+    width: 100%;
+    min-height: 50rem;
+    margin-top: 10rem;
   }
+}
+
+.section {
+  min-height: 40rem;
+  text-align: center;
 }

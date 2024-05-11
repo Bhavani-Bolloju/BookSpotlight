@@ -1,5 +1,6 @@
 import GenreSection from "./GenreSection";
 import { BookDetailsProp } from "../../firebase/services";
+import { memo } from "react";
 
 interface ScienceSectionProp {
   bookmarks: string[];
@@ -9,8 +10,10 @@ interface ScienceSectionProp {
   ) => Promise<void>;
 }
 
-const ScienceSection = function (props: ScienceSectionProp) {
+const ScienceSection = memo((props: ScienceSectionProp) => {
   const genre = "science";
+
+  console.log(genre, "current component");
 
   return (
     <GenreSection
@@ -20,7 +23,7 @@ const ScienceSection = function (props: ScienceSectionProp) {
       toggleBookmark={props.toggleBookmark}
     />
   );
-};
+});
 
 export default ScienceSection;
 
