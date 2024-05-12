@@ -1,7 +1,6 @@
 import useFetch from "../custom-hook/useFetch";
 import React from "react";
 import { Splide, SplideSlide } from "@splidejs/react-splide";
-import "@splidejs/react-splide/css";
 
 import Spinner from "react-bootstrap/Spinner";
 import { useNavigate } from "react-router-dom";
@@ -14,6 +13,7 @@ import { BookDetailsProp } from "../../firebase/services";
 import { SecondaryHeader } from "../ui/Headings";
 
 import classes from "./GenreSection.module.scss";
+import "@splidejs/react-splide/css";
 
 interface ImageLinks {
   thumbnail: string;

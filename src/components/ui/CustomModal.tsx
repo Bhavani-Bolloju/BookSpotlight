@@ -5,7 +5,7 @@ import CustomButton from "./Button";
 import BookItem from "../home/BookItem";
 import { Book } from "../home/GenreSection";
 import classes from "./CustomModal.module.scss";
-import { Spinner } from "react-bootstrap";
+import Spinner from "react-bootstrap/Spinner";
 import { BookDetailsProp } from "../../firebase/services";
 
 interface CustomModalProps {

@@ -2,7 +2,6 @@ import { useInView } from "react-intersection-observer";
 import { useEffect, useState } from "react";
 import classes from "./LazyImage.module.scss";
 import placeholderImage from "../../assets/book-open.svg";
-// import { Spinner } from "react-bootstrap";
 interface LazyImageProps {
   src: string;
   alt: string;

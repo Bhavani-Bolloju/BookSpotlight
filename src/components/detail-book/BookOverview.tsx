@@ -1,7 +1,7 @@
 import { useState, useEffect, useContext } from "react";
 
 import useFetch from "../custom-hook/useFetch";
-import { Spinner } from "react-bootstrap";
+import Spinner from "react-bootstrap/Spinner";
 import DOMPurify from "dompurify";
 import { AuthContext } from "../../context/AuthContext";
 import useUser from "../custom-hook/useUser";

@@ -1,5 +1,5 @@
 // import { useParams } from "react-router";
-import { Spinner } from "react-bootstrap";
+import Spinner from "react-bootstrap/Spinner";
 // import { apiKey } from "../components/custom-fetch/useFetch";
 
 import classes from "./SearchResults.module.scss";

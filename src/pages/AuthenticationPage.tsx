@@ -14,7 +14,7 @@ import { auth, db } from "../firebase/firebaseSetup";
 import { addDoc } from "firebase/firestore";
 import { collection } from "firebase/firestore";
 
-import { Spinner } from "react-bootstrap";
+import Spinner from "react-bootstrap/Spinner";
 import { useNavigate } from "react-router-dom";
 
 const AuthenticationPage: React.FC = () => {
