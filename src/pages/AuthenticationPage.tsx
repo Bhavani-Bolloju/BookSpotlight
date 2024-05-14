@@ -1,10 +1,8 @@
 import React, { useEffect, useState } from "react";
 import classes from "./Authenticaton.module.scss";
 import Form from "react-bootstrap/Form";
-// import Button from "react-bootstrap/Button";
 import CustomButton from "../components/ui/Button";
 import FloatingLabel from "react-bootstrap/FloatingLabel";
-import { useInView } from "react-intersection-observer";
 
 import {
   createUserWithEmailAndPassword,
@@ -23,12 +21,6 @@ const AuthenticationPage: React.FC = () => {
     email: "",
     password: "",
     name: ""
-  });
-
-  const { ref, inView } = useInView({
-    threshold: 0.5,
-    triggerOnce: true,
-    delay: 5000
   });
 
   const [isLoading, setIsloading] = useState(false);
@@ -96,7 +88,7 @@ const AuthenticationPage: React.FC = () => {
   };
 
   return (
-    <section className={classes["form"]} ref={ref}>
+    <section className={classes["form"]}>
       <h2 className={classes["form__heading"]}>
         {accountExist ? "Log in" : "sign up"}
       </h2>
