@@ -9,6 +9,7 @@ import { Book } from "../home/GenreSection";
 import React, { useCallback, useEffect, useRef, useState } from "react";
 import { BookDetailsProp } from "../../firebase/services";
 import { TertiaryHeader } from "../ui/Headings";
+import { useInView } from "react-intersection-observer";
 // import debounce from "lodash/debounce";
 
 interface SearchResultsProps {
@@ -27,14 +28,20 @@ const SearchResults: React.FC<SearchResultsProps> = function ({
   bookmarks,
   toggleBookmark
 }) {
-  const maxResults = 2;
+  const maxResults = 10;
   const index = useRef<number>(0);
 
   const [data, setData] = useState<never[]>([]);
   const [error, setError] = useState<null | string>(null);
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
-  const targetObserver = useRef<HTMLDivElement>(null);
+  const { ref, inView } = useInView({
+    threshold: 0,
+    triggerOnce: false,
+    delay: 500,
+    root: null,
+    rootMargin: "100px"
+  });
 
   let fetchUrl = `subject`;
 
@@ -76,31 +83,11 @@ const SearchResults: React.FC<SearchResultsProps> = function ({
   );
 
   useEffect(() => {
-    const currentObserver = targetObserver.current;
-    const observer = new IntersectionObserver(
-      (entries) => {
-        if (entries[0].isIntersecting) {
-          fetchDataOnScroll(fetchUrl, genre);
-          index.current = index.current + 1;
-        }
-      },
-      {
-        root: null,
-        threshold: 0
-      }
-    );
-
-    if (currentObserver) {
-      observer.observe(currentObserver);
+    if (inView) {
+      fetchDataOnScroll(fetchUrl, genre);
+      index.current = index.current + 1;
     }
-    return () => {
-      if (currentObserver) {
-        observer.unobserve(currentObserver);
-      }
-
-      observer.disconnect();
-    };
-  }, [targetObserver, fetchDataOnScroll, fetchUrl, genre]);
+  }, [inView, fetchDataOnScroll, fetchUrl, genre]);
 
   return (
     <section id="searchResults" className={classes.searchResults}>
@@ -112,24 +99,28 @@ const SearchResults: React.FC<SearchResultsProps> = function ({
         {data && data?.length > 0 && (
           <ul className={classes["searchResults__list"]}>
             {data?.map((book: Book, i: number) => (
-              <li key={book?.id + "" + i}>
-                <BookItem
-                  id={book?.id}
-                  thumbnail={book?.volumeInfo?.imageLinks?.thumbnail}
-                  title={book?.volumeInfo?.title}
-                  author={book?.volumeInfo?.authors}
-                  description={book?.volumeInfo?.description}
-                  bookmarked={bookmarks?.some((item) => item === book?.id)}
-                  toggleBookmark={toggleBookmark}
-                />
-              </li>
+              <React.Fragment key={book?.id + "" + i}>
+                {book?.volumeInfo?.imageLinks?.thumbnail && (
+                  <li>
+                    <BookItem
+                      id={book?.id}
+                      thumbnail={book?.volumeInfo?.imageLinks?.thumbnail}
+                      title={book?.volumeInfo?.title}
+                      author={book?.volumeInfo?.authors}
+                      description={book?.volumeInfo?.description}
+                      bookmarked={bookmarks?.some((item) => item === book?.id)}
+                      toggleBookmark={toggleBookmark}
+                    />
+                  </li>
+                )}
+              </React.Fragment>
             ))}
           </ul>
         )}
         {isLoading && <Spinner />}
         {error && <p>{error}</p>}
       </div>
-      <div ref={targetObserver} className={classes.end}></div>
+      <div ref={ref} className={classes.end}></div>
     </section>
   );
 };

@@ -1,11 +1,12 @@
 .searchResults {
-  width: 80%;
-  margin: auto;
-  // height: 100vh;
-
+  min-height: 100vh;
+  background: linear-gradient(to bottom, #fdf4ffaf, #fdf4ffaf),
+    url("../../assets/noisy-texture.webp");
   &__container {
     text-align: center;
+    margin: auto;
     margin-top: 10rem;
+    width: 80%;
   }
 
   &__title {
@@ -19,11 +20,12 @@
   &__list {
     list-style: none;
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(50%, 1fr));
-    // grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr));
+
+    grid-template-columns: repeat(auto-fill, minmax(25rem, 1fr));
     align-items: baseline;
-    gap: 2rem;
-    row-gap: 4rem;
+
+    gap: 3rem;
+    row-gap: 5rem;
     margin-top: 5rem;
 
     li {
@@ -31,7 +33,7 @@
       align-items: center;
       justify-content: center;
       padding: 0;
-      // min-width: 250px;
+      width: 80%;
       button {
         padding: 0;
       }
