@@ -27,7 +27,7 @@ const SearchResults: React.FC<SearchResultsProps> = function ({
   bookmarks,
   toggleBookmark
 }) {
-  const maxResults = 10;
+  const maxResults = 2;
   const index = useRef<number>(0);
 
   const [data, setData] = useState<never[]>([]);

@@ -19,7 +19,8 @@
   &__list {
     list-style: none;
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(50%, 1fr));
+    // grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr));
     align-items: baseline;
     gap: 2rem;
     row-gap: 4rem;
