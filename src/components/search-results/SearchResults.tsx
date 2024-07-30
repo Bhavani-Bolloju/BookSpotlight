@@ -10,7 +10,6 @@ import React, { useCallback, useEffect, useRef, useState } from "react";
 import { BookDetailsProp } from "../../firebase/services";
 import { TertiaryHeader } from "../ui/Headings";
 import { useInView } from "react-intersection-observer";
-// import debounce from "lodash/debounce";
 
 interface SearchResultsProps {
   title: string;

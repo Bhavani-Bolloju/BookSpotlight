@@ -13,8 +13,6 @@ interface ScienceSectionProp {
 const ScienceSection = memo((props: ScienceSectionProp) => {
   const genre = "science";
 
-  console.log(genre, "current component");
-
   return (
     <GenreSection
       name="genre"
@@ -26,5 +24,3 @@ const ScienceSection = memo((props: ScienceSectionProp) => {
 });
 
 export default ScienceSection;
-
-// volumes ? q = subject : ${ genre }& maxResults=${     maxResults }

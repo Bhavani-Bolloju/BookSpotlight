@@ -26,33 +26,43 @@ export const AuthProvider: React.FC<AuthProviderProps> = function ({
     getStoredToken = JSON.parse(storedToken);
   }
 
-  // console.log(typeof getStoredToken);
   const [user, setUser] = useState<User | null>(getStoredToken);
-
-  // console.log(getStoredToken);
 
   const checkTokenExpiration = function (expirationTime: number): boolean {
     const presentTime = Date.now();
+    // console.log(presentTime - expirationTime);
+    // console.log(new Date(expirationTime));
     return presentTime > expirationTime;
+  };
+
+  const handleLogout = () => {
+    setUser(null);
+    localStorage.removeItem("token");
+    signOut(auth);
   };
 
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged((firebaseuser) => {
-      if (!getStoredToken && firebaseuser) {
-        localStorage.setItem("token", JSON.stringify(firebaseuser));
-      }
-      if (getStoredToken) {
-        console.log(new Date(getStoredToken.stsTokenManager.expirationTime));
-        const isExpired = checkTokenExpiration(
-          getStoredToken.stsTokenManager.expirationTime
-        );
-        if (isExpired) {
-          setUser(null);
-          localStorage.removeItem("token");
-          signOut(auth);
+      if (firebaseuser) {
+        if (!getStoredToken) {
+          //store only when the token is not stored locally
+          localStorage.setItem("token", JSON.stringify(firebaseuser));
         }
+        if (getStoredToken) {
+          //if token stored locally check its validity
+          const isExpired = checkTokenExpiration(
+            getStoredToken.stsTokenManager.expirationTime
+          );
+          if (isExpired) {
+            handleLogout();
+          }
+        } else {
+          //when there is not stored token in localstorage
+          setUser(firebaseuser);
+        }
+      } else {
+        handleLogout();
       }
-      setUser(firebaseuser);
     });
     if (typeof unsubscribe === "function") {
       return () => {

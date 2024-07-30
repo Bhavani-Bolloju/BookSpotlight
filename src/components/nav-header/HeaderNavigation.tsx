@@ -12,13 +12,11 @@ import { auth } from "../../firebase/firebaseSetup";
 
 import classes from "./HeaderNavigation.module.scss";
 function HeaderNavigation() {
-  // const navigate = useNavigate();
   const userAuth = useContext(AuthContext);
   const [isnavActive, setIsnavActive] = useState(false);
 
   const logoutHandler = function () {
     signOut(auth);
-    localStorage.removeItem("token");
   };
 
   return (

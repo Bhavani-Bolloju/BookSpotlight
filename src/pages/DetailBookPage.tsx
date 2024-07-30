@@ -15,16 +15,7 @@ import classes from "./DetailBookPage.module.scss";
 function DetailBookPage() {
   const params = useParams();
   const id = params?.id;
-
-  // const {
-  //   data: book,
-  //   error,
-  //   isLoading
-  // } = useFetch(`volumes/${id}?projection=full&printType=books&langRestrict=en`);
-
   const [bookmarks, setBookmarks] = useState<string[] | []>([]);
-
-  // const [isBookmarked, setIsBookmarked] = useState(false);
 
   const ctx = useContext(AuthContext);
   const user = useUser(ctx?.uid);
@@ -55,6 +46,7 @@ function DetailBookPage() {
   };
 
   // console.log(bookmarks);
+  console.log("detail book page");
 
   return (
     <section className={classes.book}>
