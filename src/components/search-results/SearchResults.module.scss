@@ -1,39 +1,43 @@
 .searchResults {
-  min-height: 100vh;
   background: linear-gradient(to bottom, #fdf4ffaf, #fdf4ffaf),
     url("../../assets/noisy-texture.webp");
+  text-align: center;
+  padding-top: 10rem;
+
   &__container {
     text-align: center;
     margin: auto;
-    margin-top: 10rem;
+    margin-top: 5rem;
     width: 80%;
   }
 
   &__title {
     font-size: 3.2rem;
     font-weight: 500;
-    margin: 2rem 0;
     text-transform: uppercase;
     color: var(--color-text-2);
+    text-align: center;
   }
 
   &__list {
     list-style: none;
     display: grid;
-
+    padding: 2rem;
     grid-template-columns: repeat(auto-fill, minmax(25rem, 1fr));
-    align-items: baseline;
+    align-items: center;
+    justify-content: center;
 
     gap: 3rem;
     row-gap: 5rem;
+    column-gap: 5rem;
     margin-top: 5rem;
 
     li {
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: 0;
-      width: 80%;
+      padding: 0rem;
+      width: 100%;
       button {
         padding: 0;
       }

@@ -11,7 +11,6 @@ import useUser from "../custom-hook/useUser";
 import { getBookmarkedBook } from "../../firebase/services";
 import { BookDetailsProp } from "../../firebase/services";
 import classes from "./BookItem.module.scss";
-// import { Spinner } from "react-bootstrap";
 import LazyImage from "../ui/LazyImage";
 
 export interface BookItemProp {

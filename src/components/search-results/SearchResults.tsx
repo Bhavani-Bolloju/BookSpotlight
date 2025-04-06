@@ -88,13 +88,15 @@ const SearchResults: React.FC<SearchResultsProps> = function ({
     }
   }, [inView, fetchDataOnScroll, fetchUrl, genre]);
 
+  console.log(data);
+
   return (
     <section id="searchResults" className={classes.searchResults}>
-      <div className={classes["searchResults__container"]}>
-        <TertiaryHeader>
-          {title === "author" ? `more books by ${genre.split("+")}` : genre}
-        </TertiaryHeader>
+      <TertiaryHeader>
+        {title === "author" ? `more books by ${genre.split("+")}` : genre}
+      </TertiaryHeader>
 
+      <div className={classes["searchResults__container"]}>
         {data && data?.length > 0 && (
           <ul className={classes["searchResults__list"]}>
             {data?.map((book: Book, i: number) => (
