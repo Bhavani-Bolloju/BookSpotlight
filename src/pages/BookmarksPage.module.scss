@@ -1,5 +1,5 @@
 .bookmarks {
-  padding: 5rem;
+  // padding: rem;
   width: 90%;
   margin: auto;
   margin-top: 12vh;
@@ -12,7 +12,13 @@
   }
   &__container {
     display: grid;
+    padding: 2rem;
     grid-template-columns: repeat(auto-fill, minmax(25rem, 1fr));
-    gap: 2rem;
+    align-items: center;
+    justify-content: center;
+    gap: 3rem;
+    row-gap: 5rem;
+    column-gap: 5rem;
+    margin-top: 5rem;
   }
 }

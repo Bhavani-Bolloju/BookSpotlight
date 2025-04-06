@@ -2,7 +2,6 @@ import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../context/AuthContext";
 import useUser from "../components/custom-hook/useUser";
 import BookItem from "../components/home/BookItem";
-// import { BookItemProp } from "../components/home/BookItem";
 import classes from "./BookmarksPage.module.scss";
 import { modifyBookmarks } from "../firebase/services";
 

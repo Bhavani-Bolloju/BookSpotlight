@@ -5,7 +5,6 @@ import Navbar from "react-bootstrap/Navbar";
 import icon from "../../assets/Reading.svg";
 import { Link, NavLink } from "react-router-dom";
 import CustomButton from "../ui/Button";
-// import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../../context/AuthContext";
 import { signOut } from "firebase/auth";
 import { auth } from "../../firebase/firebaseSetup";
@@ -13,7 +12,7 @@ import { auth } from "../../firebase/firebaseSetup";
 import classes from "./HeaderNavigation.module.scss";
 function HeaderNavigation() {
   const userAuth = useContext(AuthContext);
-  const [isnavActive, setIsnavActive] = useState(false);
+  const [isNavActive, setIsNavActive] = useState(false);
 
   const logoutHandler = function () {
     signOut(auth);
@@ -30,7 +29,7 @@ function HeaderNavigation() {
           <div className={classes["navbar__box"]}>
             <Nav
               className={
-                !isnavActive
+                !isNavActive
                   ? `${classes["navbar__links"]}`
                   : `${classes["navbar__links--active"]}`
               }
@@ -51,9 +50,9 @@ function HeaderNavigation() {
               </div>
             )}
             <button
-              onClick={() => setIsnavActive((prev) => !prev)}
+              onClick={() => setIsNavActive((prev) => !prev)}
               className={
-                !isnavActive
+                !isNavActive
                   ? `${classes.hamburger}`
                   : `${classes.hamburger} ${classes["hamburger__active"]}`
               }

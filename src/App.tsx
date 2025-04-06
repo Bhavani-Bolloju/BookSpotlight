@@ -104,15 +104,19 @@ function App() {
           <Route
             path="/bookmarks"
             element={
-              <Suspense
-                fallback={
-                  <div className="center">
-                    <Spinner />
-                  </div>
-                }
-              >
-                <LazyBookmarksPage />
-              </Suspense>
+              userAuth ? (
+                <Suspense
+                  fallback={
+                    <div className="center">
+                      <Spinner />
+                    </div>
+                  }
+                >
+                  <LazyBookmarksPage />
+                </Suspense>
+              ) : (
+                <Navigate to="/" replace />
+              )
             }
           />
         </Route>

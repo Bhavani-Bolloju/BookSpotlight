@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import classes from "./Authenticaton.module.scss";
-import Form from "react-bootstrap/Form";
 import CustomButton from "../components/ui/Button";
 import FloatingLabel from "react-bootstrap/FloatingLabel";
+import Form from "react-bootstrap/Form";
 
 import {
   createUserWithEmailAndPassword,
@@ -18,9 +18,9 @@ import { useNavigate } from "react-router-dom";
 
 const AuthenticationPage: React.FC = () => {
   const [inputFields, setInputFields] = useState({
-    email: "",
-    password: "",
-    name: ""
+    email: "newuser@gmail.com",
+    password: "newuser@123",
+    name: "new user"
   });
 
   const [isLoading, setIsloading] = useState(false);
@@ -33,7 +33,6 @@ const AuthenticationPage: React.FC = () => {
   useEffect(() => {
     if (error) {
       setTimeout(() => {
-        console.log("called timeout");
         setError(null);
       }, 2000);
     }
@@ -163,26 +162,3 @@ const AuthenticationPage: React.FC = () => {
 };
 
 export default AuthenticationPage;
-
-{
-  /* <Form.Label htmlFor="inputEmailId">Email address</Form.Label>
-        <Form.Control
-          type="email"
-          id="inputEmailId"
-          aria-describedby="emailAddress"
-          name="email"
-          onChange={handleInputFields}
-          value={inputFields.email}
-        /> */
-}
-{
-  /* <Form.Label htmlFor="inputPassword">Password</Form.Label>
-        <Form.Control
-          type="password"
-          id="inputPassword"
-          aria-describedby="passwordH"
-          name="password"
-          onChange={handleInputFields}
-          value={inputFields.password}
-        /> */
-}
