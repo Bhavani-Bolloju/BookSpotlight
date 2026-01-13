@@ -3,6 +3,9 @@
 ## Why this app?
 
 A lot of book lovers struggle to find books by genre or track what they want to read. BookSpotlight solves this with real-time search, genre wise browsing, and bookmarking.
+<br/>
+
+**Live Link** - https://bookspotlight.netlify.app/
 
 ## Tech Stack
 ReactJs, TypeScript, Firebase(Auth + Storage), SASS(CSS preprocessor), React Router, React Bootstrap, SWR, Google Books API.
