@@ -9,8 +9,8 @@ interface LazyImageProps {
 
 function LazyImage({ src, alt }: LazyImageProps) {
   const { ref, inView } = useInView({
-    threshold: 0.5,
-    delay: 1500,
+    threshold: 0.6,
+    delay: 1000,
     triggerOnce: true
   });
   const [isLoading, setIsLoading] = useState(false);
@@ -23,16 +23,16 @@ function LazyImage({ src, alt }: LazyImageProps) {
 
   return (
     <div ref={ref} className={classes["book__image"]}>
-      {isLoading ? (
-        <img src={src} alt={alt} height={230} width={100} />
-      ) : (
-        <img
+      {isLoading ?
+        <img src={src} alt={alt} height={230} width={100} loading="lazy" />
+      : <img
           src={placeholderImage}
           alt="placeholder"
           height={230}
           width={100}
+          loading="lazy"
         />
-      )}
+      }
     </div>
   );
 }

@@ -47,11 +47,11 @@ function HeroSection() {
 
   return (
     <header className={classes.heroSection}>
-      <PrimaryHeader> to know is to learn, to learn is to grow</PrimaryHeader>
+      <PrimaryHeader> Explore what matters</PrimaryHeader>
       <div className={classes["heroSection__search"]}>
         <InputGroup>
           <Form.Control
-            placeholder="search here"
+            placeholder="Search by title, author, or ISBN"
             aria-label="Recipient's username"
             aria-describedby="basic-addon2"
             value={inputQuery}

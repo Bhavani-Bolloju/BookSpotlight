@@ -13,9 +13,11 @@ import { BookDetailsProp } from "../../firebase/services";
 import { SecondaryHeader } from "../ui/Headings";
 
 import classes from "./GenreSection.module.scss";
+
 import "@splidejs/react-splide/css";
 
 interface ImageLinks {
+  smallThumbnail: string;
   thumbnail: string;
 }
 
@@ -62,6 +64,8 @@ const GenreSection: React.FC<GenreSectionProps> = function ({
 
   const { data, isLoading, error } = useFetch(URL);
   const navigate = useNavigate();
+
+  console.log(data, "genre section");
 
   const navigateHandler = function () {
     const encodeURL = encodeURIComponent(title);
@@ -121,7 +125,10 @@ const GenreSection: React.FC<GenreSectionProps> = function ({
                       <SplideSlide>
                         <BookItem
                           id={bookId}
-                          thumbnail={book?.volumeInfo?.imageLinks?.thumbnail}
+                          thumbnail={
+                            book?.volumeInfo?.imageLinks?.smallThumbnail ||
+                            book?.volumeInfo?.imageLinks?.thumbnail
+                          }
                           title={book?.volumeInfo?.title}
                           author={book?.volumeInfo?.authors}
                           description={book?.volumeInfo?.description}
