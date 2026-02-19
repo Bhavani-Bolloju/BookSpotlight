@@ -24,6 +24,8 @@ const CustomModal: React.FC<CustomModalProps> = function (props) {
     `volumes?q=${props.query}&orderBy=relevance&projection=lite&printType=books&langRestrict=en`
   );
 
+  console.log("customModal", props);
+
   return (
     <Modal
       {...props}
@@ -48,8 +50,8 @@ const CustomModal: React.FC<CustomModalProps> = function (props) {
                   title={book?.volumeInfo?.title}
                   author={book?.volumeInfo?.authors}
                   description={book?.volumeInfo?.description}
-                  toggleBookmark={props.toggleBookmark}
-                  bookmarked={props.bookmarks?.some(
+                  toggleBookmark={props?.toggleBookmark}
+                  bookmarked={props?.bookmarks?.some(
                     (item) => item === book?.id
                   )}
                 />

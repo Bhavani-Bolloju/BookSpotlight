@@ -35,8 +35,9 @@ const Description: React.FC<DescriptionProp> = function ({ htmlContent }) {
   const sanitizedHTML = htmlContent ? DOMPurify.sanitize(htmlContent) : "";
   const content = sanitizedHTML.replace(/<[^>]+>/g, "");
 
-  const paraHiddenClass = paraHidden
-    ? `${classes["book__summary--text"]}`
+  const paraHiddenClass =
+    paraHidden ?
+      `${classes["book__summary--text"]}`
     : `${classes["book__summary--text"]} ${classes["active"]}`;
 
   return (
@@ -160,18 +161,18 @@ function BookOverview({ id, bookmarks, toggleBookmark }: BookOverviewProps) {
             <TertiaryHeader>{book?.volumeInfo?.title}</TertiaryHeader>
             <p className={classes["book__authors"]}>
               by{" "}
-              {book?.volumeInfo?.authors
-                ? book?.volumeInfo?.authors
-                : "unknown"}
+              {book?.volumeInfo?.authors ?
+                book?.volumeInfo?.authors
+              : "unknown"}
             </p>
             <h4 className={classes["book__summary--title"]}>summary</h4>
             <Description htmlContent={book?.volumeInfo?.description} />
 
             <ul className={classes["book__additional-info"]}>
               <li>
-                <span className={classes.title}>Catergory : </span>
+                <span className={classes.title}>Category : </span>
                 <span className={classes.text}>
-                  {ctg.join("").split(" / ").join(", ")}
+                  {ctg?.join("").split(" / ").join(", ")}
                 </span>
               </li>
               <li>

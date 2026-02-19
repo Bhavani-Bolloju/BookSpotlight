@@ -24,7 +24,7 @@ function DetailBookPage() {
   useEffect(() => {
     const bookmarks = async function (docId: string) {
       const req = await getBookmarks(docId);
-      console.log("setting bookmarks");
+      // console.log("setting bookmarks");
       setBookmarks(req);
     };
 
@@ -44,9 +44,6 @@ function DetailBookPage() {
     const req = await getBookmarks(user?.docId);
     setBookmarks(req);
   };
-
-  // console.log(bookmarks);
-  console.log("detail book page");
 
   return (
     <section className={classes.book}>
