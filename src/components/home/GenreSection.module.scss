@@ -1,8 +1,8 @@
 .genre {
-  padding: 0rem 10rem 0rem;
+  padding: 2rem 10rem;
   width: 100%;
   min-height: 20rem;
-  // animation: fadeIn 1s ease-in 1.5;
+  background-color: var(--color-surface);
 
   @media screen and (max-width: 65rem) {
     padding: 0rem 2rem 0rem;

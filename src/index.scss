@@ -1,10 +1,20 @@
 :root {
-  --color-text-1: #334155;
-  --color-text-2: #475569;
-  --color-background: #fdf4ff;
-  --color-2: #f5d0fe;
-  --color-3: #f0abfc;
-  --color-error: #f33c13;
+  --color-text-1: #101828;
+  --color-text-2: #667085;
+
+  --color-background: #ffffff;
+  --color-surface: #eaecf0;
+
+  --color-accent: #20b486;
+  --color-accent-2: #eafff9;
+  --color-accent-3: #eafff9b0;
+
+  // --color-text-1: #334155;
+  // --color-text-2: #475569;
+  // --color-background: #fdf4ff;
+  // --color-2: #f5d0fe;
+  // --color-3: #f0abfc;
+  // --color-error: #f33c13;
 
   // /* font-family */
   // --font-heading: "Cinzel", serif; //400;600;700
@@ -12,6 +22,7 @@
   /* font-family */
   --font-heading: "Raleway", sans-serif; //400;600;700
   --font-body: "Poppins", serif; //300;400;500;600;700
+  --nav-height: 10rem;
 }
 
 /* SPACING SYSTEM (px)
@@ -41,21 +52,14 @@ body {
   font-family: var(--font-body);
   background-color: var(--color-background);
   color: var(--color-text-1);
-  letter-spacing: 0.8px;
+  letter-spacing: 0.2px;
   font-size: 1.6rem;
-  height: 100vh;
-}
-
-.carousel-control-prev-icon {
-  // background-image: url("./assets/mingcute_left-line.svg");
-}
-
-.carousel-control-next-icon {
-  // background-image: url("./assets//mingcute_right-line.svg");
+  min-height: 100vh;
+  line-height: 1.5;
 }
 
 .splide__arrow {
-  background: white !important;
+  background: var(--color-background) !important;
   border-radius: 0 !important;
   border: 2px solid var(--color-3) !important;
 }

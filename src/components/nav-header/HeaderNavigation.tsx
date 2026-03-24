@@ -29,9 +29,9 @@ function HeaderNavigation() {
           <div className={classes["navbar__box"]}>
             <Nav
               className={
-                !isNavActive
-                  ? `${classes["navbar__links"]}`
-                  : `${classes["navbar__links--active"]}`
+                !isNavActive ?
+                  `${classes["navbar__links"]}`
+                : `${classes["navbar__links--active"]}`
               }
             >
               <Link to="/home">Home</Link>
@@ -52,9 +52,9 @@ function HeaderNavigation() {
             <button
               onClick={() => setIsNavActive((prev) => !prev)}
               className={
-                !isNavActive
-                  ? `${classes.hamburger}`
-                  : `${classes.hamburger} ${classes["hamburger__active"]}`
+                !isNavActive ?
+                  `${classes.hamburger}`
+                : `${classes.hamburger} ${classes["hamburger__active"]}`
               }
             >
               <span></span>

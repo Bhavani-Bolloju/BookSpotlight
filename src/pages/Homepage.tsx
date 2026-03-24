@@ -1,5 +1,4 @@
 // import React from 'react'
-import classes from "./HomePage.module.scss";
 import HeroSection from "../components/home/HeroSection";
 import ScienceSection from "../components/home/ScienceSection";
 import BiographySection from "../components/home/BiographySection";
@@ -14,6 +13,7 @@ import { BookDetailsProp } from "../firebase/services";
 import { modifyBookmarks } from "../firebase/services";
 
 import { useInView, InView } from "react-intersection-observer";
+import classes from "./HomePage.module.scss";
 
 function HomePage() {
   const [bookmarks, setBookmarks] = useState<string[] | []>([]);
@@ -66,7 +66,7 @@ function HomePage() {
             />
           )}
         </div>
-        <InView
+        {/* <InView
           as="div"
           onChange={(inView) => {
             setBioInView(inView);
@@ -119,7 +119,7 @@ function HomePage() {
               toggleBookmark={toggleBookmarkHandler}
             />
           )}
-        </InView>
+        </InView> */}
       </main>
     </section>
   );

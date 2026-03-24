@@ -1,5 +1,5 @@
 import React, { ReactNode, ButtonHTMLAttributes } from "react";
-import Button from "react-bootstrap/Button";
+
 import classes from "./Button.module.scss";
 
 interface CustomButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
@@ -7,9 +7,9 @@ interface CustomButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 }
 const CustomButton: React.FC<CustomButtonProps> = function (props) {
   return (
-    <Button className={classes.button} {...props}>
+    <button className={classes.button} {...props}>
       {props.children}
-    </Button>
+    </button>
   );
 };
 

@@ -1,16 +1,13 @@
 .button {
   width: 22rem;
-  border-color: var(--color-3) !important;
-  color: var(--color-text) !important;
-  font-weight: 500 !important;
-  background: linear-gradient(
-    to right,
-    var(--color-2) 20%,
-    var(--color-3) 100%
-  );
-  padding: 1rem 2rem !important;
-  font-size: 1.4rem !important;
-  flex-direction: row !important;
+  border: none;
+  font-weight: 500;
+  background-color: var(--color-accent);
+  color: var(--color-background);
+
+  padding: 1rem 2rem;
+  font-size: 1.6rem;
+  flex-direction: row;
 
   &:hover {
     box-shadow: 0 1px 1rem rgba(240, 171, 252, 0.5);
@@ -22,8 +19,8 @@
   }
 
   &:focus-visible {
-    box-shadow: none !important;
+    box-shadow: none;
     border: 2px solid #f0abfc;
-    box-shadow: 1px -1px 5px 2px rgba(#f0abfc, 0.5) !important;
+    box-shadow: 1px -1px 5px 2px rgba(#f0abfc, 0.5);
   }
 }

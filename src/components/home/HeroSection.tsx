@@ -5,13 +5,13 @@ import CustomButton from "../ui/Button";
 import React, { useContext, useState } from "react";
 
 import CustomModal from "../ui/CustomModal";
-import classes from "./HeroSection.module.scss";
 import { modifyBookmarks } from "../../firebase/services";
 import { AuthContext } from "../../context/AuthContext";
 import useUser from "../custom-hook/useUser";
 import { BookDetailsProp } from "../../firebase/services";
 import { getBookmarks } from "../../firebase/services";
 import { PrimaryHeader } from "../ui/Headings";
+import classes from "./HeroSection.module.scss";
 
 function HeroSection() {
   const [inputQuery, setInputQuery] = useState("");

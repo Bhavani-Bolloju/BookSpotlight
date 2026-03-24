@@ -1,9 +1,6 @@
 .navbar {
-  color: var(--color-text-1);
   position: relative;
-  height: 10rem;
-  backdrop-filter: blur(3px);
-  height: 10vh;
+  height: var(--nav-height);
   position: fixed;
   width: 100%;
   z-index: 2000;
@@ -14,11 +11,8 @@
     height: 100%;
     padding: 2.5rem 0;
     width: 100%;
-    background-color: var(--color-background);
-    background: linear-gradient(to top, #fdf4ffaf 50%, #f5d0fe88),
-      url("../../assets/noisy-texture.webp");
-    background-repeat: repeat-x;
-    // background-size: contain;
+    background-color: var(--color-accent-3);
+    color: var(--color-text-1);
   }
 
   &__heading {
@@ -79,9 +73,9 @@
   &__container {
     a {
       color: var(--color-text-1) !important;
-      font-size: 1.6rem;
+      font-size: 1.8rem;
       text-decoration: none;
-      font-weight: 600;
+      font-weight: 500;
       opacity: 0.9;
 
       &:hover {
@@ -136,8 +130,11 @@
 
   &__button {
     margin-left: auto;
+
     button {
       width: 10rem;
+      border: none;
+      border-radius: 1rem;
 
       @media screen and (max-width: 75rem) {
         margin-left: 1rem;
