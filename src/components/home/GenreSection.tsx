@@ -65,7 +65,11 @@ const GenreSection: React.FC<GenreSectionProps> = function ({
   const { data, isLoading, error } = useFetch(URL);
   const navigate = useNavigate();
 
-  console.log(data, "genre section");
+  // console.log(data, "genre section", title);
+
+  if (data) {
+    localStorage.setItem(title, JSON.stringify(data));
+  }
 
   const navigateHandler = function () {
     const encodeURL = encodeURIComponent(title);
@@ -94,22 +98,22 @@ const GenreSection: React.FC<GenreSectionProps> = function ({
         {data && data?.totalItems > 0 && !isLoading && (
           <Splide
             options={{
-              perPage: 5,
+              perPage: 9,
               arrows: true,
               pagination: false,
               drag: "free",
               perMove: 1,
               breakpoints: {
                 1200: {
-                  perPage: 4
+                  perPage: 7
                 },
                 850: {
+                  perPage: 5
+                },
+                650: {
                   perPage: 3
                 },
-                700: {
-                  perPage: 2
-                },
-                550: {
+                450: {
                   perPage: 1
                 }
               }

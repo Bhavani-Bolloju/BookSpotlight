@@ -6,8 +6,9 @@
   --color-surface: #eaecf0;
 
   --color-accent: #20b486;
-  --color-accent-2: #eafff9;
-  --color-accent-3: #eafff9b0;
+
+  --color-accent-2: #adedd1;
+  --color-accent-3: #edfcf5;
 
   // --color-text-1: #334155;
   // --color-text-2: #475569;
@@ -16,10 +17,6 @@
   // --color-3: #f0abfc;
   // --color-error: #f33c13;
 
-  // /* font-family */
-  // --font-heading: "Cinzel", serif; //400;600;700
-  // --font-body: "Source Serif 4", serif; //300;400;500;600;700
-  /* font-family */
   --font-heading: "Raleway", sans-serif; //400;600;700
   --font-body: "Poppins", serif; //300;400;500;600;700
   --nav-height: 10rem;
@@ -67,21 +64,14 @@ body {
 .splide__arrow--prev {
   left: -2% !important;
   top: 50% !important;
-
-  background-color: var(--color-2);
-
-  svg {
-    fill: var(--color-3) !important;
-  }
 }
 
 .splide__arrow--next {
   right: -2% !important;
   top: 50% !important;
-  background-color: var(--color-2);
 
   svg {
-    fill: var(--color-3) !important;
+    fill: var(--color-surface) !important;
   }
 }
 
@@ -89,22 +79,9 @@ body {
   padding: 2rem 0;
 }
 
-.splide__list {
-  align-items: start !important;
-
-  li {
-    // background-color: red;
-    display: flex;
-    align-items: stretch;
-    justify-content: center;
-    // border: 1px solid var(--color-2);
-  }
-}
-
 .popover {
-  background-color: var(--color-2);
-  background: linear-gradient(to right top, var(--color-2) 60%, var(--color-3));
-  padding: 0.5rem 1rem;
+  background: var(--color-accent-2);
+  padding: 1rem;
   border: none;
   display: flex;
   color: var(--color-text-1);

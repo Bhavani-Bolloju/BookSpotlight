@@ -1,21 +1,37 @@
 .book__image {
-  max-width: 18rem;
   width: 100%;
+  height: 70%;
   padding: 1rem;
   border-radius: 0.5rem;
-  background-color: var(--color-2);
-  background: linear-gradient(to bottom, #f0abfca8, #f5d0fece),
-    url("../../assets/noisy-texture.webp");
+  background: var(--color-accent-2);
   box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.05);
 
-  img {
+  .book__cover {
     width: 100%;
-    object-fit: cover;
+    height: 100%;
     border-radius: 0.5rem;
-  }
+    overflow: hidden;
 
-  img {
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 0.5rem;
+    }
+  }
+  .book__placeholder {
     width: 100%;
-    object-fit: cover;
+    height: 100%;
+    border-radius: 0.5rem;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    img {
+      width: 50%;
+      height: auto;
+      object-fit: contain;
+    }
   }
 }

@@ -66,7 +66,7 @@ function HomePage() {
             />
           )}
         </div>
-        {/* <InView
+        <InView
           as="div"
           onChange={(inView) => {
             setBioInView(inView);
@@ -119,7 +119,7 @@ function HomePage() {
               toggleBookmark={toggleBookmarkHandler}
             />
           )}
-        </InView> */}
+        </InView>
       </main>
     </section>
   );
