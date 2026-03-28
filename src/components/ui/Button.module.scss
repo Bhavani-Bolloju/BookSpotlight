@@ -14,13 +14,13 @@
   }
 
   &:focus {
-    border: red;
+    border-color: var(--color-accent);
     outline: red;
   }
 
   &:focus-visible {
     box-shadow: none;
-    border: 2px solid #f0abfc;
-    box-shadow: 1px -1px 5px 2px rgba(#f0abfc, 0.5);
+    border: 2px solid var(--color-accent);
+    box-shadow: 1px -1px 5px 2px var(--color-accent-2);
   }
 }

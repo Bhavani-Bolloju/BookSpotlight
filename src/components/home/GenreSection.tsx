@@ -52,7 +52,7 @@ const GenreSection: React.FC<GenreSectionProps> = function ({
   bookmarks,
   toggleBookmark
 }) {
-  const maxResults = 10;
+  const maxResults = 15;
   let URL: string = `volumes?q=subject:science&maxResults=${maxResults}`;
   if (name === "genre") {
     URL = `volumes?q=subject:${title}&maxResults=${maxResults}&orderBy=newest&projection=full&printType=books&langRestrict=en`;

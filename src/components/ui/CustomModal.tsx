@@ -4,10 +4,10 @@ import useFetch from "../custom-hook/useFetch";
 import CustomButton from "./Button";
 import BookItem from "../home/BookItem";
 import { Book } from "../home/GenreSection";
-import classes from "./CustomModal.module.scss";
 import Spinner from "react-bootstrap/Spinner";
 import { BookDetailsProp } from "../../firebase/services";
 
+import classes from "./CustomModal.module.scss";
 interface CustomModalProps {
   show: boolean;
   onHide: () => void;
@@ -23,8 +23,6 @@ const CustomModal: React.FC<CustomModalProps> = function (props) {
   const { data, isLoading, error } = useFetch(
     `volumes?q=${props.query}&orderBy=relevance&projection=lite&printType=books&langRestrict=en`
   );
-
-  console.log("customModal", props);
 
   return (
     <Modal

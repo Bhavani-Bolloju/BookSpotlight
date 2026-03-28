@@ -14,7 +14,7 @@
     font-weight: 600;
     margin-top: 3rem;
     margin-left: 5rem;
-    margin-bottom: 3rem;
+    // margin-bottom: 1rem;
     text-align: start;
     color: var(--color-text-2);
   }
@@ -30,7 +30,7 @@
   &__list {
     width: 100%;
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(12rem, 15rem));
     height: 60vh;
     overflow-y: scroll;
     overflow-x: hidden;

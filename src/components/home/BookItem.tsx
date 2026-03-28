@@ -1,7 +1,6 @@
 import React, { Ref, forwardRef, useContext, useEffect, useState } from "react";
 import { ReactNode } from "react";
 import { useNavigate, Link } from "react-router-dom";
-import Button from "react-bootstrap/Button";
 import OverlayTrigger from "react-bootstrap/OverlayTrigger";
 import Popover, { PopoverProps } from "react-bootstrap/Popover";
 import { AuthContext } from "../../context/AuthContext";
@@ -114,14 +113,15 @@ const BookItem: React.FC<BookItemProp> = function ({
             </UpdatingPopover>
           }
         >
-          <Button type="button" onClick={navigateHandler}>
+          <button onClick={navigateHandler} className={classes["book__item"]}>
             <LazyImage src={thumbnail} alt={title} />
-
-            <p className={classes["book__title"]}>{title}</p>
-            <p className={classes["book__author"]}>
-              By {author ? author : "unknown"}
-            </p>
-          </Button>
+            <div className={classes["book__info"]}>
+              <p className={classes["book__title"]}>{title}</p>
+              <p className={classes["book__author"]}>
+                By {author ? author : "unknown"}
+              </p>
+            </div>
+          </button>
         </OverlayTrigger>
 
         <button

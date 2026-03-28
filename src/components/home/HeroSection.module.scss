@@ -28,22 +28,21 @@
       width: 100%;
     }
     input {
-      border-color: var(--color-2);
+      border-color: var(--color-accent);
       padding: 1rem;
       font-size: 1.6rem;
       font-family: var(--font-body);
       color: var(--color-text-2);
       &:focus {
-        box-shadow: 0 5px 2rem rgba(240, 171, 252, 0.6);
-        border-color: var(--color-2);
+        box-shadow: 1px 0px 5px 2px var(--color-accent-2);
         color: inherit;
       }
 
       &::placeholder {
-        font-size: 1.6rem;
+        font-size: 1.4rem;
         text-transform: capitalize;
-        font-weight: 500;
-        color: var(--color-3);
+        color: var(--color-text-2);
+        opacity: 0.8;
         font-family: inherit;
       }
     }
