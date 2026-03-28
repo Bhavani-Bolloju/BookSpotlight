@@ -11,8 +11,8 @@
     height: 100%;
     padding: 2.5rem 0;
     width: 100%;
-    background-color: var(--color-accent-3);
-    color: var(--color-text-1);
+    background-color: var(--color-accent);
+    color: var(--color-background);
   }
 
   &__heading {
@@ -70,7 +70,8 @@
 
   &__container {
     a {
-      color: var(--color-text-1) !important;
+      // color: var(--color-text-1) !important;c
+      color: inherit;
       font-size: 1.8rem;
       text-decoration: none;
       font-weight: 500;
@@ -132,15 +133,19 @@
     button {
       width: 10rem;
       border: none;
-      border-radius: 1rem;
+      border-radius: 0.5rem;
+
+      padding: 0.8rem 2rem;
+      background-color: var(--color-accent-3);
+      color: var(--color-accent);
 
       @media screen and (max-width: 75rem) {
         margin-left: 1rem;
-        width: 8rem;
+        // width: 8rem;
       }
       @media screen and (max-width: 50rem) {
         margin-left: 0px;
-        width: 7rem;
+        // width: 7rem;
       }
     }
   }

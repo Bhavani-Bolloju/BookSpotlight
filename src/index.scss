@@ -5,21 +5,13 @@
   --color-background: #ffffff;
   --color-surface: #eaecf0;
 
-  --color-accent: #20b486;
-
-  --color-accent-2: #adedd1;
-  --color-accent-3: #edfcf5;
-
-  // --color-text-1: #334155;
-  // --color-text-2: #475569;
-  // --color-background: #fdf4ff;
-  // --color-2: #f5d0fe;
-  // --color-3: #f0abfc;
-  // --color-error: #f33c13;
+  --color-accent: #4dabf7;
+  --color-accent-2: #a5d8ff;
+  --color-accent-3: #e7f5ff;
 
   --font-heading: "Raleway", sans-serif; //400;600;700
   --font-body: "Poppins", serif; //300;400;500;600;700
-  --nav-height: 10rem;
+  --nav-height: 7rem;
 }
 
 /* SPACING SYSTEM (px)
@@ -73,6 +65,10 @@ body {
   svg {
     fill: var(--color-surface) !important;
   }
+}
+
+.splide__list {
+  gap: 2rem;
 }
 
 .splide__track {
