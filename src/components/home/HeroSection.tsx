@@ -13,6 +13,8 @@ import { getBookmarks } from "../../firebase/services";
 import { PrimaryHeader } from "../ui/Headings";
 import classes from "./HeroSection.module.scss";
 
+import logo from "../../assets/logo-3.png";
+
 function HeroSection() {
   const [inputQuery, setInputQuery] = useState("");
 

@@ -2,7 +2,10 @@ import { useContext, useState } from "react";
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
-import icon from "../../assets/Reading.svg";
+// import icon from "../../assets/logo-2.png";
+// import icon from "../../assets/logo-3.png";
+import icon from "../../assets/logo.png";
+
 import { Link, NavLink } from "react-router-dom";
 import CustomButton from "../ui/Button";
 import { AuthContext } from "../../context/AuthContext";
@@ -23,8 +26,8 @@ function HeaderNavigation() {
       <Navbar>
         <Container className={classes["navbar__container"]}>
           <NavLink to="/" className={classes["navbar__heading"]}>
-            <img src={icon} alt="logo" height={100} width={100} />
             <span>BookSpotlight</span>
+            <img src={icon} alt="logo" height={100} width={100} />
           </NavLink>
           <div className={classes["navbar__box"]}>
             <Nav
