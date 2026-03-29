@@ -104,11 +104,9 @@ const BookItem: React.FC<BookItemProp> = function ({
               id="popover-contained"
               className={classes["popover"]}
             >
-              <div>
-                <div className={classes["popover__description"]}>
-                  <span>Description: </span>
-                  {description}
-                </div>
+              <div className={classes["popover__description"]}>
+                <span>Description: </span>
+                {description}
               </div>
             </UpdatingPopover>
           }
