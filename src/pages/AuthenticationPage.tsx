@@ -30,14 +30,6 @@ const AuthenticationPage: React.FC = () => {
 
   const navigate = useNavigate();
 
-  useEffect(() => {
-    if (error) {
-      setTimeout(() => {
-        setError(null);
-      }, 2000);
-    }
-  }, [error]);
-
   const handleInputFields = function (e: React.ChangeEvent<HTMLInputElement>) {
     setInputFields((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
@@ -144,9 +136,9 @@ const AuthenticationPage: React.FC = () => {
         <CustomButton type="submit">Submit</CustomButton>
         <div className={classes["form__switch"]}>
           <div>
-            {accountExist
-              ? "Don't have an account?"
-              : "Already have an account"}
+            {accountExist ?
+              "Don't have an account?"
+            : "Already have an account"}
           </div>
           <button
             onClick={() => {

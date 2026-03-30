@@ -1,7 +1,6 @@
 // import { useParams } from "react-router";
 import Spinner from "react-bootstrap/Spinner";
 
-
 import classes from "./SearchResults.module.scss";
 
 import BookItem from "../home/BookItem";
@@ -37,9 +36,8 @@ const SearchResults: React.FC<SearchResultsProps> = function ({
   const { ref, inView } = useInView({
     threshold: 0,
     triggerOnce: false,
-    delay: 500,
-    root: null,
-    rootMargin: "100px"
+    delay: 200,
+    root: null
   });
 
   let fetchUrl = `subject`;
@@ -47,6 +45,8 @@ const SearchResults: React.FC<SearchResultsProps> = function ({
   if (title === "author") {
     fetchUrl = `inauthor`;
   }
+
+  console.log(inView, "search results in");
 
   const fetchDataOnScroll = useCallback(
     async (keyword: string, value: string) => {
@@ -87,8 +87,6 @@ const SearchResults: React.FC<SearchResultsProps> = function ({
       index.current = index.current + 1;
     }
   }, [inView, fetchDataOnScroll, fetchUrl, genre]);
-
-  console.log(data);
 
   return (
     <section id="searchResults" className={classes.searchResults}>

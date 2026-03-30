@@ -9,8 +9,6 @@ const useFetch = function (url: string) {
 
   const { data, error, isLoading } = useSWR(key, fetcher);
 
-  console.log(data, "real data is being fetched");
-
   return { data, error, isLoading };
 };
 export default useFetch;
