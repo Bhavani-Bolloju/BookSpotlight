@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import classes from "./Authenticaton.module.scss";
 import CustomButton from "../components/ui/Button";
 import FloatingLabel from "react-bootstrap/FloatingLabel";
